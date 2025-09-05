@@ -4,24 +4,25 @@
 
 ## 🔎 Quick Navigation
 
-* 🧠✨ [Agentic Workflow without Training](#agentic-workflow-without-training)
-* 🧪📊 [Agent Evaluation and Benchmarks](#agent-evaluation-and-benchmarks)
-* 🧰⚙️ [Agent Training Frameworks](#agent-training-frameworks)
-* 👤🧭 [RL for Single Agent](#rl-for-single-agent)
 
-  * 🔁🧪 [Self-Evolution & Test-Time RL](#self-evolution--test-time-rl)
-  * 🛠️🧠 [RL for Tool Use & Agent Training](#rl-for-tool-use--agent-training)
-  * 💾🧠 [Memory & Knowledge Management](#memory--knowledge-management)
-  * 🔁📈 [Fine-Grained RL & Trajectory Calibration](#fine-grained-rl--trajectory-calibration)
-  * 🎛️🎯 [Alignment & Preference Optimization](#alignment--preference-optimization)
-* 💸🧠 [Cost-Aware Reasoning & Budget-Constrained RL](#cost-aware-reasoning--budget-constrained-rl)
-* 👥🤝 [RL for Multi-Agent Systems](#rl-for-multi-agent-systems)
+* [Agentic Workflow without Training](#agentic-workflow-without-training)
+* [Agent Evaluation and Benchmarks](#agent-evaluation-and-benchmarks)
+* [Agent Training Frameworks](#agent-training-frameworks)
+* [RL for Single Agent](#rl-for-single-agent)
 
-  * 🗺️📅 [Planning](#planning)
-  * 🤝🧩 [Collaboration](#collaboration)
-* 🤖🌍 [Embodied Agents & World Models](#embodied-agents--world-models)
-* 📚💡 [Surveys & Position Papers](#surveys--position-papers)
-* 🧾✅ [Concluding Remarks](#concluding-remarks)
+  * [Self-Evolution & Test-Time RL](#self-evolution--test-time-rl)
+  * [RL for Tool Use & Agent Training](#rl-for-tool-use--agent-training)
+  * [Memory & Knowledge Management](#memory--knowledge-management)
+  * [Fine-Grained RL & Trajectory Calibration](#fine-grained-rl--trajectory-calibration)
+  * [Alignment & Preference Optimization](#alignment--preference-optimization)
+* [Cost-Aware Reasoning & Budget-Constrained RL](#cost-aware-reasoning--budget-constrained-rl)
+* [RL for Multi-Agent Systems](#rl-for-multi-agent-systems)
+
+  * [Planning](#planning)
+  * [Collaboration](#collaboration)
+* [Embodied Agents & World Models](#embodied-agents--world-models)
+* [Surveys & Position Papers](#surveys--position-papers)
+* [Concluding Remarks](#concluding-remarks)
 
 ---
 
