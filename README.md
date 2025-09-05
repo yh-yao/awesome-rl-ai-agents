@@ -19,13 +19,13 @@
   * [Planning](#planning)
   * [Collaboration](#collaboration)
 * [Embodied Agents & World Models](#embodied-agents--world-models)
-* [Task: Search & Research Agents](#task-search--research-agents)
-* [Task: Code Agents](#task-code-agents)
-* [Task: Mathematical Agents](#task-mathematical-agents)
-* [Task: GUI Agents](#task-gui-agents)
+* [Task Agents](#task-agents)
+  * [Search & Research Agents](#search--research-agents)
+  * [Code Agents](#code-agents)
+  * [Mathematical Agents](#mathematical-agents)
+  * [GUI Agents](#gui-agents)
 * [Surveys & Position Papers](#surveys--position-papers)
 * [Concluding Remarks](#concluding-remarks)
-
 ---
 
 Reinforcement learning (RL) is rapidly becoming a driving force behind AI agents that can reason, act and adapt in the real world. Large language models (LLMs) provide a powerful prior for reasoning, but without feedback they remain static and brittle. RL enables agents to learn from interaction – whether it’s via self-reflection, outcome-based rewards or interacting with humans and tools.
@@ -311,7 +311,6 @@ As agents scale, **cost, latency, and efficiency** become critical. These works 
 | DeepSeek-Prover-v1.5 | Formal | [Paper](https://openreview.net/forum?id=I4YAIwrsXa) | [Code](https://github.com/deepseek-ai/DeepSeek-Prover-V1.5) |
 | Leanabell-Prover | Formal | [Paper](https://arxiv.org/abs/2504.06122) | [Code](https://github.com/Leanabell-LM/Leanabell-Prover) |
 
----
 
 ## Task: GUI Agents
 
@@ -321,7 +320,6 @@ As agents scale, **cost, latency, and efficiency** become critical. These works 
 | SeeAct | Vanilla VLM | - | [Paper](https://proceedings.mlr.press/v235/zheng24e.html) | [Code](https://github.com/OSU-NLP-Group/SeeAct) |
 | GUI-R1 | RL | Static | [Paper](https://arxiv.org/pdf/2504.10458) | [Code](https://github.com/ritzz-ai/GUI-R1) |
 | UI-R1 | RL | Static | [Paper](https://arxiv.org/abs/2503.21620) | [Code](https://github.com/lll6gg/UI-R1) |
-| InFiGUI-R1 | RL | Static | [Paper](https://arxiv.org/abs/2504.14239) | [Code](https://github.com/InfiXAI/InfiGUI-R1) |
 | UI-TARS | RL | Interactive | [Paper](https://arxiv.org/abs/2501.12326) | [Code](https://github.com/bytedance/UI-TARS) |
 
 ---
@@ -331,7 +329,6 @@ As agents scale, **cost, latency, and efficiency** become critical. These works 
 | Title                                                               | Short title | Venue | Year |                 Materials                 | Description                            |
 | :------------------------------------------------------------------ | :---------: | :---: | :--: | :---------------------------------------: | :------------------------------------- |
 | The Landscape of Agentic Reinforcement Learning for LLMs: A Survey  |   ARL-Surv  | arXiv | 2025 | [Paper](https://arxiv.org/abs/2509.02547) | Comprehensive ARL landscape            |
-| LLM-Based Multi-Agent Reinforcement Learning: Directions            |  MARL-Surv  | arXiv | 2024 | [Paper](https://arxiv.org/abs/2405.11106) | Multi-agent reinforcement learning     |
 | A Survey of Self-Evolving Agents                                    |  SE-Survey  | arXiv | 2025 | [Paper](https://arxiv.org/abs/2507.21046) | Taxonomy of self-evolving LLM agents   |
 | Budget-Aware Evaluation of LLM Reasoning Strategies                 | BudgetEval  | EMNLP | 2024 | [Paper](https://aclanthology.org/2024.emnlp-main.1112/) | Budget-aware reasoning evaluation |
 | Alignment & Preference Optimization in LLM Agents                   | Align-Pos   | arXiv | 2023 | [Paper](https://arxiv.org/abs/2310.03708) | Alignment and multi-objective methods  |
@@ -341,7 +338,49 @@ As agents scale, **cost, latency, and efficiency** become critical. These works 
 ## Concluding Remarks
 
 Reinforcement learning for AI agents is evolving rapidly, with rich algorithm families (PPO, DPO, GRPO, etc.), diverse evaluation benchmarks, and specialized agents across domains such as search, code, mathematics, and GUI.  
-This repository consolidates these resources to support both research and practical implementation of next-generation agentic systems.
+## Task Agents
+
+### Search & Research Agents
+| Method | Category | Base LLM | Link | Resource |
+|--------|----------|----------|------|----------|
+| DeepRetrieval | External | Qwen2.5-3B-Instruct, Llama-3.2-3B-Instruct | [Paper](https://arxiv.org/pdf/2503.00223) | [Code](https://github.com/pat-jj/DeepRetrieval) |
+| Search-R1 | External | Qwen2.5-3B/7B-Base/Instruct | [Paper](https://arxiv.org/abs/2503.09516) | [Code](https://github.com/PeterGriffinJin/Search-R1) |
+| R1-Searcher | External | Qwen2.5-7B, Llama3.1-8B-Instruct | [Paper](https://arxiv.org/abs/2503.05592) | [Code](https://github.com/RUCAIBox/R1-Searcher) |
+| WebThinker | External | QwQ-32B, DeepSeek-R1-Distilled-Qwen-7B/14B/32B | [Paper](https://arxiv.org/abs/2504.21776) | [Code](https://github.com/sunnynexus/WebThinker) |
+| WebSailor | External | Qwen2.5-3B/7B/32B/72B | [Paper](https://arxiv.org/abs/2507.02592) | [Code](https://github.com/Alibaba-NLP/WebAgent/tree/main/WebSailor) |
+| SSRL | Internal | Qwen2.5-1.5B/3B/7B/14B/32B/72B-Instruct, Llama-3.2-1B/8B-Instruct | [Paper](https://arxiv.org/abs/2508.10874) | [Code](https://github.com/TsinghuaC3I/SSRL) |
+| OpenAI Deep Research | External | OpenAI Models | [Blog](https://openai.com/index/introducing-deep-research/) | [Website](https://chatgpt.com/) |
+| Perplexity DeepResearch | External | - | [Blog](https://www.perplexity.ai/hub/blog/introducing-perplexity-deep-research) | [Website](https://www.perplexity.ai/) |
+
+### Code Agents
+| Method | RL Reward Type | Base LLM | Link | Resource |
+|--------|----------------|----------|------|----------|
+| AceCoder | Outcome | Qwen2.5-Coder-7B-Base/Instruct | [Paper](https://arxiv.org/abs/2502.01718) | [Code](https://github.com/TIGER-AI-Lab/AceCoder) |
+| DeepCoder-14B | Outcome | DeepSeek-R1-Distilled-Qwen-14B | [Blog](https://pretty-radio-b75.notion.site/DeepCoder-A-Fully-Open-Source-14B-Coder-at-O3-mini-Level-1cf81902c14680b3bee5eb349a512a51) | [Code](https://github.com/agentica-project/rllm) |
+| CodeBoost | Process | Qwen2.5-Coder-7B-Instruct, Llama-3.1-8B-Instruct | [Paper](https://arxiv.org/abs/2508.05242) | [Code](https://github.com/sijieaaa/CodeBoost) |
+| R1-Code-Interpreter | Outcome | Qwen2.5-7B/14B-Instruct-1M | [Paper](https://arxiv.org/abs/2505.21668) | [Code](https://github.com/yongchao98/R1-Code-Interpreter) |
+| SWE-RL | Outcome | Llama-3.3-70B-Instruct | [Paper](https://arxiv.org/abs/2502.18449) | [Code](https://github.com/facebookresearch/swe-rl) |
+| Satori-SWE | Outcome | Qwen-2.5-Math-7B | [Paper](https://openreview.net/forum?id=j4FXxMiDjL) | [Code](https://github.com/satori-reasoning/Satori) |
+
+### Mathematical Agents
+| Method | Reward | Link | Resource |
+|--------|--------|------|----------|
+| ARTIST | Outcome | [Paper](https://arxiv.org/abs/2505.01441) | - |
+| ToRL | Outcome | [Paper](https://arxiv.org/abs/2503.05592) | [Code](https://github.com/GAIR-NLP/ToRL) |
+| ZeroTIR | Outcome | [Paper](https://arxiv.org/abs/2505.07773) | [Code](https://github.com/yyht/openrlhf_async_pipline) |
+| TTRL | Outcome | [Paper](https://arxiv.org/abs/2504.16084) | [Code](https://github.com/PRIME-RL/TTRL) |
+| DeepSeek-Prover-v1.5 | Formal | [Paper](https://openreview.net/forum?id=I4YAIwrsXa) | [Code](https://github.com/deepseek-ai/DeepSeek-Prover-V1.5) |
+| Leanabell-Prover | Formal | [Paper](https://arxiv.org/abs/2504.06122) | [Code](https://github.com/Leanabell-LM/Leanabell-Prover) |
+
+### GUI Agents
+| Method | Paradigm | Environment | Link | Resource |
+|--------|----------|-------------|------|----------|
+| MM-Navigator | Vanilla VLM | - | [Paper](https://arxiv.org/abs/2311.07562) | [Code](https://github.com/zzxslp/MM-Navigator) |
+| SeeAct | Vanilla VLM | - | [Paper](https://proceedings.mlr.press/v235/zheng24e.html) | [Code](https://github.com/OSU-NLP-Group/SeeAct) |
+| GUI-R1 | RL | Static | [Paper](https://arxiv.org/pdf/2504.10458) | [Code](https://github.com/ritzz-ai/GUI-R1) |
+| UI-R1 | RL | Static | [Paper](https://arxiv.org/abs/2503.21620) | [Code](https://github.com/lll6gg/UI-R1) |
+| InFiGUI-R1 | RL | Static | [Paper](https://arxiv.org/abs/2504.14239) | [Code](https://github.com/InfiXAI/InfiGUI-R1) |
+| UI-TARS | RL | Interactive | [Paper](https://arxiv.org/abs/2501.12326) | [Code](https://github.com/bytedance/UI-TARS) |
 
 ## References
 https://github.com/xhyumiracle/Awesome-AgenticLLM-RL-Papers
