@@ -151,13 +151,6 @@ Reinforcement learning methods that focus on **individual agents** (typically LL
 |   SWEET-RL: Multi-Turn Collaborative RL  |   SWEET-RL  |     arXiv    | 2025 | [Paper](https://arxiv.org/abs/2503.15478) | Multi-turn reasoning with collaborative critic.         |
 |      ATLaS: Critical Step Selection      |    ATLaS    |      ACL     | 2025 | [Paper](https://arxiv.org/abs/2503.02197) | Focuses learning on critical reasoning steps.           |
 
-### Alignment & Preference Optimization
-
-|                             Title                             | Short title | Venue |    Year   |                 Materials                 | Description                                 |
-| :-----------------------------------------------------------: | :---------: | :---: | :-------: | :---------------------------------------: | :------------------------------------------ |
-| Beyond One-Preference-Fits-All Alignment: Multi-Objective DPO |    MODPO    | arXiv | 2023–2024 | [Paper](https://arxiv.org/abs/2310.03708) | Extends DPO with multi-objective alignment. |
-
-
 
 ---
 
@@ -211,7 +204,6 @@ Summarizes key algorithm families, objectives, and available implementations.
 
 As agents scale, **cost, latency, and efficiency** become critical. These works tackle budget-aware reasoning, token efficiency, and cost-sensitive planning.
 
-*Sources: *
 
 |                                   Title                                  |  Short title  |     Venue    | Year |                                             Materials                                             | Description                                                      |
 | :----------------------------------------------------------------------: | :-----------: | :----------: | :--: | :-----------------------------------------------------------------------------------------------: | :--------------------------------------------------------------- |
@@ -224,6 +216,8 @@ As agents scale, **cost, latency, and efficiency** become critical. These works 
 |            Budget-Aware Evaluation of LLM Reasoning Strategies           |   BudgetEval  |     EMNLP    | 2024 |                      [Paper](https://aclanthology.org/2024.emnlp-main.1112/)                      | Proposes evaluation framework accounting for budget limits.      |
 |    LLM Cascades with Mixture of Thoughts for Cost-Efficient Reasoning    |  MoT Cascade  | ICLR / arXiv | 2024 | [Paper](https://arxiv.org/abs/2310.03094) \| [Code](https://github.com/MurongYue/LLM_MoT_cascade) | Uses “mixture of thoughts” cascades for efficiency.              |
 |       BudgetThinker: Budget-Aware LLM Reasoning with Control Tokens      | BudgetThinker |     arXiv    | 2025 |                             [Paper](https://arxiv.org/abs/2508.17196)                             | Introduces control tokens to manage budget during inference.     |
+| Beyond One-Preference-Fits-All Alignment: Multi-Objective DPO |    MODPO    | arXiv | 2023–2024 | [Paper](https://arxiv.org/abs/2310.03708) | Extends DPO with multi-objective alignment. |
+
 
 
 ---
