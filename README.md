@@ -99,20 +99,17 @@ Tables give a quick overview; detailed descriptions follow in the text.
 
 Reinforcement learning methods that focus on **individual agents** (typically LLMs), enabling them to adapt, self-improve, and use tools effectively.
 
-*Sources: *
 
-### Self-Evolution & Test-Time RL
+|                                                         Title                                                         |   Short title  |      Venue     |    Year   |                                            Materials                                           | Description                                             |
+| :-------------------------------------------------------------------------------------------------------------------: | :------------: | :------------: | :-------: | :--------------------------------------------------------------------------------------------: | :------------------------------------------------------ |
+|                                       **TTRL: Test-Time Reinforcement Learning**                                      |      TTRL      |      ICLR      |    2025   |                            [Paper](https://arxiv.org/abs/2504.16084)                           | Inference-time RL via majority-vote rewards.            |
+|           **ProRL: Prolonged Reinforcement Learning Expands Reasoning Boundaries in Large Language Models**           |      ProRL     |      ICLR      |    2025   |                            [Paper](https://arxiv.org/abs/2505.24864)                           | KL-control with reference resets for longer reasoning.  |
+|              **RAGEN: Understanding Self-Evolution in LLM Agents via Multi-Turn Reinforcement Learning**              | RAGEN / StarPO |      ICLR      |    2025   |                            [Paper](https://arxiv.org/abs/2504.20073)                           | Multi-turn critic-based RL for evolving behaviors.      |
+| **Alita: Generalist Agent Enabling Scalable Agentic Reasoning with Minimal Predefinition and Maximal Self-Evolution** |      Alita     |     GAIA LB    |    2025   |                            [Paper](https://arxiv.org/abs/2505.20286)                           | Modular framework for online self-evolution.            |
+|                   **Gödel Agent: A Self-Referential Agent Framework for Recursive Self-Improvement**                  |   Gödel Agent  |   ACL / arXiv  | 2024–2025 |                            [Paper](https://arxiv.org/abs/2410.04444)                           | Recursive self-modification with reasoning loops.       |
+|                        **Darwin Godel Machine: Open-Ended Evolution of Self-Improving Agents**                        |    Darwin GM   |      arXiv     |    2025   |                            [Paper](https://arxiv.org/abs/2505.22954)                           | Darwinian exploration for open-ended agent improvement. |
+|                     **SkyRL-v0: Train Real-World Long-Horizon Agents via Reinforcement Learning**                     |    SkyRL-v0    | arXiv / GitHub |    2025   | [Blog](https://novasky-ai.notion.site/skyrl-v0) \| [Code](https://github.com/NovaSky-AI/SkyRL) | Long-horizon online RL training pipeline.               |
 
-|                             Title                             |   Short title  |      Venue     |    Year   |                                            Materials                                           | Description                                             |
-| :-----------------------------------------------------------: | :------------: | :------------: | :-------: | :--------------------------------------------------------------------------------------------: | :------------------------------------------------------ |
-|                Test-Time Reinforcement Learning               |      TTRL      |      ICLR      |    2025   |                            [Paper](https://arxiv.org/abs/2504.16084)                           | Inference-time RL via majority-vote rewards.            |
-| Prolonged Reinforcement Learning Expands Reasoning Boundaries |      ProRL     |      ICLR      |    2025   |                            [Paper](https://arxiv.org/abs/2505.24864)                           | KL-control with reference resets for longer reasoning.  |
-|                A Survey of Self-Evolving Agents               |    SE Survey   |      arXiv     |    2025   |                            [Paper](https://arxiv.org/abs/2507.21046)                           | Taxonomy and methods for self-evolving agents.          |
-|            RAGEN: Multi-Turn RL for Self-Evolution            | RAGEN / StarPO |      ICLR      |    2025   |                            [Paper](https://arxiv.org/abs/2504.20073)                           | Multi-turn critic-based RL for evolving behaviors.      |
-|             Alita: Generalist Self-Evolving Agent             |      Alita     |     GAIA LB    |    2025   |                            [Paper](https://arxiv.org/abs/2505.20286)                           | Modular framework for online self-evolution.            |
-|     Gödel Agent: Recursive Self-Improvement in LLM Agents     |   Gödel Agent  |   ACL / arXiv  | 2024–2025 |                            [Paper](https://arxiv.org/abs/2410.04444)                           | Recursive self-modification with reasoning loops.       |
-|                      Darwin Gödel Machine                     |    Darwin GM   |      arXiv     |    2025   |                            [Paper](https://arxiv.org/abs/2505.22954)                           | Darwinian exploration for open-ended agent improvement. |
-|                  SkyRL-v0 (duplicate listing)                 |    SkyRL-v0    | arXiv / GitHub |    2025   | [Blog](https://novasky-ai.notion.site/skyrl-v0) \| [Code](https://github.com/NovaSky-AI/SkyRL) | Long-horizon online RL training pipeline.               |
 
 ### RL for Tool Use & Agent Training
 
@@ -323,15 +320,10 @@ As agents scale, **cost, latency, and efficiency** become critical. These works 
 | Title                                                               | Short title | Venue | Year |                 Materials                 | Description                            |
 | :------------------------------------------------------------------ | :---------: | :---: | :--: | :---------------------------------------: | :------------------------------------- |
 | The Landscape of Agentic Reinforcement Learning for LLMs: A Survey  |   ARL-Surv  | arXiv | 2025 | [Paper](https://arxiv.org/abs/2509.02547) | Comprehensive ARL landscape            |
-| A Survey of Self-Evolving Agents                                    |  SE-Survey  | arXiv | 2025 | [Paper](https://arxiv.org/abs/2507.21046) | Taxonomy of self-evolving LLM agents   |
 | Budget-Aware Evaluation of LLM Reasoning Strategies                 | BudgetEval  | EMNLP | 2024 | [Paper](https://aclanthology.org/2024.emnlp-main.1112/) | Budget-aware reasoning evaluation |
 | Alignment & Preference Optimization in LLM Agents                   | Align-Pos   | arXiv | 2023 | [Paper](https://arxiv.org/abs/2310.03708) | Alignment and multi-objective methods  |
+|                     A Survey of Self-Evolving Agents: On Path to Artificial Super Intelligence                    |    SE Survey   |      arXiv     |    2025   |                            [Paper](https://arxiv.org/abs/2507.21046)                           | Taxonomy and methods for self-evolving agents.          |
 
----
-
-## Concluding Remarks
-
-Reinforcement learning for AI agents is evolving rapidly, with rich algorithm families (PPO, DPO, GRPO, etc.), diverse evaluation benchmarks, and specialized agents across domains such as search, code, mathematics, and GUI.  
 ## Task Agents
 
 ### Search & Research Agents
@@ -376,7 +368,18 @@ Reinforcement learning for AI agents is evolving rapidly, with rich algorithm fa
 | InFiGUI-R1 | RL | Static | [Paper](https://arxiv.org/abs/2504.14239) | [Code](https://github.com/InfiXAI/InfiGUI-R1) |
 | UI-TARS | RL | Interactive | [Paper](https://arxiv.org/abs/2501.12326) | [Code](https://github.com/bytedance/UI-TARS) |
 
+---
+
+## Concluding Remarks
+
+Reinforcement learning for AI agents is rapidly evolving, driving breakthroughs in reasoning, autonomy, and collaboration. As new methods and frameworks emerge, staying current is essential for both research and practical deployment. This curated list aims to support the community in navigating the dynamic landscape and make contributions!
+
+💡 *Pull requests welcome to keep this list up to date!*
+
 ## References
+
 https://github.com/xhyumiracle/Awesome-AgenticLLM-RL-Papers
+
 https://github.com/0russwest0/Awesome-Agent-RL
+
 https://github.com/thinkwee/AgentsMeetRL
