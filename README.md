@@ -4,23 +4,25 @@
 
 ## 🔎 Quick Navigation
 
-
 * [Agentic Workflow without Training](#agentic-workflow-without-training)
 * [Agent Evaluation and Benchmarks](#agent-evaluation-and-benchmarks)
 * [Agent Training Frameworks](#agent-training-frameworks)
 * [RL for Single Agent](#rl-for-single-agent)
-
   * [Self-Evolution & Test-Time RL](#self-evolution--test-time-rl)
   * [RL for Tool Use & Agent Training](#rl-for-tool-use--agent-training)
   * [Memory & Knowledge Management](#memory--knowledge-management)
   * [Fine-Grained RL & Trajectory Calibration](#fine-grained-rl--trajectory-calibration)
   * [Alignment & Preference Optimization](#alignment--preference-optimization)
+  * [Algorithm Families (PPO, DPO, GRPO, etc.)](#algorithm-families-ppo-dpo-grpo-etc)
 * [Cost-Aware Reasoning & Budget-Constrained RL](#cost-aware-reasoning--budget-constrained-rl)
 * [RL for Multi-Agent Systems](#rl-for-multi-agent-systems)
-
   * [Planning](#planning)
   * [Collaboration](#collaboration)
 * [Embodied Agents & World Models](#embodied-agents--world-models)
+* [Task: Search & Research Agents](#task-search--research-agents)
+* [Task: Code Agents](#task-code-agents)
+* [Task: Mathematical Agents](#task-mathematical-agents)
+* [Task: GUI Agents](#task-gui-agents)
 * [Surveys & Position Papers](#surveys--position-papers)
 * [Concluding Remarks](#concluding-remarks)
 
@@ -40,129 +42,178 @@ Tables give a quick overview; detailed descriptions follow in the text.
 
 ## Agentic Workflow without Training
 
-| Title                                                                                   | Short title |  Venue  | Year |                 Materials                 | Description                   |
-| :-------------------------------------------------------------------------------------- | :---------: | :-----: | :--: | :---------------------------------------: | :---------------------------- |
-| Tree of Thoughts: Deliberate Problem Solving with Large Language Models                 |     ToT     |   ICML  | 2023 | [Paper](https://arxiv.org/abs/2305.10601) | Search over reasoning trees   |
-| Reflexion: Language Agents with Verbal Reinforcement Learning                           |  Reflexion  | NeurIPS | 2023 | [Paper](https://arxiv.org/abs/2303.11366) | Self-critique & retry loop    |
-| Self-Refine: Iterative Refinement with Self-Feedback                                    | Self-Refine | NeurIPS | 2023 | [Paper](https://arxiv.org/abs/2303.17651) | Iterative self-improvement    |
-| ReAct: Synergizing Reasoning and Acting in Language Models                              |    ReAct    |   ICLR  | 2023 | [Paper](https://arxiv.org/abs/2210.03629) | Interleave thoughts & actions |
-| SwiftSage: A Generative Agent with Fast and Slow Thinking for Complex Interactive Tasks |  SwiftSage  |   ACL   | 2023 | [Paper](https://arxiv.org/abs/2305.17390) | Fast/slow planning split      |
-| DynaSaur: Large Language Agents Beyond Predefined Actions                               |   DynaSaur  |  arXiv  | 2024 | [Paper](https://arxiv.org/abs/2411.01747) | Dynamic action spaces         |
+| Title                                                                                   | Short title | Venue | Year | Materials | Description |
+| --------------------------------------------------------------------------------------- | ----------- | ----- | ---- | --------- | ----------- |
+| Tree of Thoughts: Deliberate Problem Solving with Large Language Models                 | ToT         | ICML  | 2023 | [Paper](https://arxiv.org/abs/2305.10601) | Search over reasoning trees to explore alternatives before committing. |
+| Reflexion: Language Agents with Verbal Reinforcement Learning                           | Reflexion   | NeurIPS | 2023 | [Paper](https://arxiv.org/abs/2303.11366) | Self-critique and retry loops that emulate feedback without training. |
+| Self-Refine: Iterative Refinement with Self-Feedback                                    | Self-Refine | NeurIPS | 2023 | [Paper](https://arxiv.org/abs/2303.17651) | Iterative editing using self-generated feedback to improve outputs. |
+| ReAct: Synergizing Reasoning and Acting in Language Models                              | ReAct       | ICLR  | 2023 | [Paper](https://arxiv.org/abs/2210.03629) | Interleaves chain-of-thought with tool calls for grounded reasoning. |
+| SwiftSage: A Generative Agent with Fast and Slow Thinking for Complex Interactive Tasks | SwiftSage   | ACL   | 2023 | [Paper](https://arxiv.org/abs/2305.17390) | Splits fast vs slow planning to balance cost and performance. |
+| DynaSaur: Large Language Agents Beyond Predefined Actions                               | DynaSaur    | arXiv | 2024 | [Paper](https://arxiv.org/abs/2411.01747) | Dynamically extends the agent’s action space beyond fixed tool sets. |
 
 ---
 
 ## Agent Evaluation and Benchmarks
 
-| Title                                                                                   |    Short title    | Venue | Year |                                Materials                                | Description                    |
-| :-------------------------------------------------------------------------------------- | :---------------: | :---: | :--: | :---------------------------------------------------------------------: | :----------------------------- |
-| GAIA: A Benchmark for General AI Assistants                                             |        GAIA       | arXiv | 2023 |                [Paper](https://arxiv.org/abs/2311.12983)                | 466 real-world tasks           |
-| TaskBench: Benchmarking Large Language Models for Task Automation                       |     TaskBench     | EMNLP | 2023 |                [Paper](https://arxiv.org/abs/2311.18760)                | Automation & tool use          |
-| AgentBench: Evaluating LLMs as Agents                                                   |     AgentBench    | arXiv | 2023 |                [Paper](https://arxiv.org/abs/2308.03688)                | 51 scenarios                   |
-| ACEBench: Who Wins the Match Point in Tool Usage?                                       |      ACEBench     | arXiv | 2025 |                [Paper](https://arxiv.org/abs/2501.12851)                | Fine-grained tool eval         |
-| Agent Leaderboard                                                                       |     Galileo LB    |   HF  | 2024 | [Dataset](https://huggingface.co/datasets/galileo-ai/agent-leaderboard) | GAIA leaderboard               |
-| Agentic Predictor: Performance Prediction for Agentic Workflows via Multi-View Encoding | Agentic Predictor | arXiv | 2025 |                [Paper](https://arxiv.org/abs/2505.19764)                | Workflow performance predictor |
+| Title                                                                                   | Short title | Venue | Year | Materials | Description |
+| --------------------------------------------------------------------------------------- | ----------- | ----- | ---- | --------- | ----------- |
+| GAIA: A Benchmark for General AI Assistants                                             | GAIA        | arXiv | 2023 | [Paper](https://arxiv.org/abs/2311.12983) | 466 real-world tasks spanning tools and reasoning. |
+| TaskBench: Benchmarking Large Language Models for Task Automation                       | TaskBench   | EMNLP | 2023 | [Paper](https://arxiv.org/abs/2311.18760) | Evaluates multi-step automation and tool integration. |
+| AgentBench: Evaluating LLMs as Agents                                                   | AgentBench | arXiv | 2023 | [Paper](https://arxiv.org/abs/2308.03688) | 51 scenarios to test agentic behaviors and robustness. |
+| ACEBench: Who Wins the Match Point in Tool Usage?                                       | ACEBench   | arXiv | 2025 | [Paper](https://arxiv.org/abs/2501.12851) | Fine-grained tool-use evaluation with step sensitivity. |
+| Agent Leaderboard (Galileo)                                                             | Galileo LB | HF    | 2024 | [Dataset](https://huggingface.co/datasets/galileo-ai/agent-leaderboard) | Community leaderboard built around GAIA-style tasks. |
+| Agentic Predictor: Performance Prediction for Agentic Workflows                         | Agentic Predictor | arXiv | 2025 | [Paper](https://arxiv.org/abs/2505.19764) | Predicts workflow performance for better design-time choices. |
 
 ---
 
 ## Agent Training Frameworks
 
-| Title                                                                          | Short title     | Venue          | Year | Materials                                                                                                                   | Description                                                                              |
-| ------------------------------------------------------------------------------ | --------------- | -------------- | ---- | --------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| Agent Lightning: Train ANY AI Agents with Reinforcement Learning               | Agent Lightning | arXiv / GitHub | 2025 | [Paper](https://arxiv.org/abs/2508.03680) \| [Code](https://github.com/microsoft/agent-lightning)                           | Unified MDP; decouples execution and training                                            |
-| SkyRL-v0: Train Real-World Long-Horizon Agents via RL                          | SkyRL-v0        | arXiv / GitHub | 2025 | [Blog](https://novasky-ai.notion.site/skyrl-v0) \| [Code](https://github.com/NovaSky-AI/SkyRL)                              | Online RL pipeline for long-horizon agent training                                       |
-| OpenManus-RL: Live-Streamed RL Tuning Framework for LLM Agents                 | OpenManus-RL    | GitHub         | 2025 | [Code](https://github.com/OpenManus/OpenManus-RL) \| [Dataset](https://huggingface.co/datasets/CharlieDreemur/OpenManus-RL) | Live-streamed tuning of LLM agents with dataset support                                  |
-| MASLab: A Unified and Comprehensive Codebase for LLM-based Multi-Agent Systems | MASLab          | arXiv / GitHub | 2025 | [Paper](https://arxiv.org/abs/2505.16988) \| [Code](https://github.com/MASWorks/MASLab)                                     | Unified MAS codebase integrating 20+ multi-agent system methods                          |
-| VerlTool: Towards Holistic Agentic Reinforcement Learning with Tool Use        | VerlTool        | arXiv / GitHub | 2025 | [Paper](https://arxiv.org/abs/2509.01055) \| [Code](https://github.com/TIGER-AI-Lab/verl-tool)                              | Modular ARLT; supports asynchronous rollouts                                             |
-| L0: Reinforcement Learning to Become General Agents                            | L0              | arXiv / GitHub | 2025 | [Paper](https://arxiv.org/abs/2506.23667) \| [Code](https://github.com/cmriat/l0)                                           | Scalable RL pipeline; NB-Agent scaffold; concurrent worker pool                          |
-| verl-agent: Extension of veRL for LLM Agents                                   | verl-agent      | GitHub         | 2025 | [Code](https://github.com/langfengQ/verl-agent)                                                                             | Step-independent multi-turn rollouts; memory modules; GiGPO RL algorithm                 |
-| ART: Agent Reinforcement Trainer                                               | ART             | GitHub         | 2025 | [Code](https://github.com/OpenPipe/ART)                                                                                     | Python harness for GRPO-based RL; OpenAI API-compatible; notebook examples               |
-| AReaL: Ant Reasoning RL for LLMs                                               | AReaL           | arXiv (?)      | 2025 | *(No public repo found)*                                                                                                    | Fully async RL system; scalable from 1 to 1K GPUs; open & reproducible (pending release) |
-| Agent-R1: End-to-End RL for Tool-using Agents                                  | Agent-R1        | arXiv (?)      | 2025 | *(No public repo found)*                                                                                                    | Multi-tool coordination; process rewards; reward normalization (described, not yet open) |
-
+| Title                                                                          | Short title | Venue | Year | Materials | Description |
+| ------------------------------------------------------------------------------ | ----------- | ----- | ---- | --------- | ----------- |
+| Agent Lightning: Train ANY AI Agents with Reinforcement Learning               | Agent Lightning | arXiv / GitHub | 2025 | [Paper](https://arxiv.org/abs/2508.03680) \| [Code](https://github.com/microsoft/agent-lightning) | Unified MDP; decouples execution and training with scalable workers. |
+| SkyRL-v0: Train Real-World Long-Horizon Agents via RL                          | SkyRL-v0    | arXiv / GitHub | 2025 | [Blog](https://novasky-ai.notion.site/skyrl-v0) \| [Code](https://github.com/NovaSky-AI/SkyRL) | Online RL pipeline for long-horizon agent training. |
+| OpenManus-RL: Live-Streamed RL Tuning Framework for LLM Agents                 | OpenManus-RL | GitHub | 2025 | [Code](https://github.com/OpenManus/OpenManus-RL) \| [Dataset](https://huggingface.co/datasets/CharlieDreemur/OpenManus-RL) | Live-streamed tuning of LLM agents with dataset support. |
+| MASLab: A Unified and Comprehensive Codebase for LLM-based Multi-Agent Systems | MASLab      | arXiv / GitHub | 2025 | [Paper](https://arxiv.org/abs/2505.16988) \| [Code](https://github.com/MASWorks/MASLab) | Unified MAS codebase integrating 20+ multi-agent system methods. |
+| VerlTool: Towards Holistic Agentic Reinforcement Learning with Tool Use        | VerlTool    | arXiv / GitHub | 2025 | [Paper](https://arxiv.org/abs/2509.01055) \| [Code](https://github.com/TIGER-AI-Lab/verl-tool) | Modular ARLT; supports asynchronous rollouts. |
+| L0: Reinforcement Learning to Become General Agents                            | L0          | arXiv / GitHub | 2025 | [Paper](https://arxiv.org/abs/2506.23667) \| [Code](https://github.com/cmriat/l0) | Scalable RL pipeline; NB-Agent scaffold; concurrent worker pool. |
+| verl-agent: Extension of veRL for LLM Agents                                   | verl-agent  | GitHub | 2025 | [Code](https://github.com/langfengQ/verl-agent) | Step-independent multi-turn rollouts; memory modules; GiGPO RL algorithm. |
+| ART: Agent Reinforcement Trainer                                               | ART         | GitHub | 2025 | [Code](https://github.com/OpenPipe/ART) | Python harness for GRPO-based RL; OpenAI API-compatible; notebook examples. |
+| AReaL: Ant Reasoning RL for LLMs                                               | AReaL       | arXiv (?) | 2025 | *(No public repo found)* | Fully async RL system; scalable from 1→1K GPUs; open & reproducible (pending release). |
+| Agent-R1: End-to-End RL for Tool-using Agents                                  | Agent-R1    | arXiv (?) | 2025 | *(No public repo found)* | Multi-tool coordination; process rewards; reward normalization (described, not yet open). |
 
 ---
+
 
 ## RL for Single Agent
 
+Reinforcement learning methods that focus on **individual agents** (typically LLMs), enabling them to adapt, self-improve, and use tools effectively.
+
+*Sources: *
+
 ### Self-Evolution & Test-Time RL
 
-| Title                                                                     |  Short title |     Venue    |    Year   |                                            Materials                                           | Description            |
-| :------------------------------------------------------------------------ | :----------: | :----------: | :-------: | :--------------------------------------------------------------------------------------------: | :--------------------- |
-| Test-Time Reinforcement Learning                                          |     TTRL     |     ICLR     |    2025   |                            [Paper](https://arxiv.org/abs/2504.16084)                           | Inference-time RL      |
-| Prolonged Reinforcement Learning Expands Reasoning Boundaries             |     ProRL    |     ICLR     |    2025   |                            [Paper](https://arxiv.org/abs/2505.24864)                           | KL-control; ref resets |
-| A Survey of Self-Evolving Agents                                          |   SE Survey  |     arXiv    |    2025   |                            [Paper](https://arxiv.org/abs/2507.21046)                           | Methods & taxonomy     |
-| RAGEN: Understanding Self-Evolution via Multi-Turn Reinforcement Learning | RAGEN/StarPO |     ICLR     |    2025   |                            [Paper](https://arxiv.org/abs/2504.20073)                           | Multi-turn RL; critic  |
-| Alita: Generalist Self-Evolving Agent                                     |     Alita    |    GAIA LB   |    2025   |                            [Paper](https://arxiv.org/abs/2505.20286)                           | Modular self-evolution |
-| Gödel Agent: Towards Recursive Self-Improvement in LLM-Based Agents       |  Gödel Agent |   ACL/arXiv  | 2024–2025 |                            [Paper](https://arxiv.org/abs/2410.04444)                           | Self-modifying agents  |
-| Darwin Gödel Machine: A Framework for Open-Ended Self-Improvement         |   Darwin GM  |     arXiv    |    2025   |                            [Paper](https://arxiv.org/abs/2505.22954)                           | Darwinian exploration  |
-| SkyRL-v0 (duplicate listing)                                              |   SkyRL-v0   | arXiv/GitHub |    2025   | [Blog](https://novasky-ai.notion.site/skyrl-v0) \| [Code](https://github.com/NovaSky-AI/SkyRL) | Long-horizon RL        |
-
----
+|                             Title                             |   Short title  |      Venue     |    Year   |                                            Materials                                           | Description                                             |
+| :-----------------------------------------------------------: | :------------: | :------------: | :-------: | :--------------------------------------------------------------------------------------------: | :------------------------------------------------------ |
+|                Test-Time Reinforcement Learning               |      TTRL      |      ICLR      |    2025   |                            [Paper](https://arxiv.org/abs/2504.16084)                           | Inference-time RL via majority-vote rewards.            |
+| Prolonged Reinforcement Learning Expands Reasoning Boundaries |      ProRL     |      ICLR      |    2025   |                            [Paper](https://arxiv.org/abs/2505.24864)                           | KL-control with reference resets for longer reasoning.  |
+|                A Survey of Self-Evolving Agents               |    SE Survey   |      arXiv     |    2025   |                            [Paper](https://arxiv.org/abs/2507.21046)                           | Taxonomy and methods for self-evolving agents.          |
+|            RAGEN: Multi-Turn RL for Self-Evolution            | RAGEN / StarPO |      ICLR      |    2025   |                            [Paper](https://arxiv.org/abs/2504.20073)                           | Multi-turn critic-based RL for evolving behaviors.      |
+|             Alita: Generalist Self-Evolving Agent             |      Alita     |     GAIA LB    |    2025   |                            [Paper](https://arxiv.org/abs/2505.20286)                           | Modular framework for online self-evolution.            |
+|     Gödel Agent: Recursive Self-Improvement in LLM Agents     |   Gödel Agent  |   ACL / arXiv  | 2024–2025 |                            [Paper](https://arxiv.org/abs/2410.04444)                           | Recursive self-modification with reasoning loops.       |
+|                      Darwin Gödel Machine                     |    Darwin GM   |      arXiv     |    2025   |                            [Paper](https://arxiv.org/abs/2505.22954)                           | Darwinian exploration for open-ended agent improvement. |
+|                  SkyRL-v0 (duplicate listing)                 |    SkyRL-v0    | arXiv / GitHub |    2025   | [Blog](https://novasky-ai.notion.site/skyrl-v0) \| [Code](https://github.com/NovaSky-AI/SkyRL) | Long-horizon online RL training pipeline.               |
 
 ### RL for Tool Use & Agent Training
 
-| Title                                                                             |    Short title   |    Venue   |    Year   |                                           Materials                                           | Description                |
-| :-------------------------------------------------------------------------------- | :--------------: | :--------: | :-------: | :-------------------------------------------------------------------------------------------: | :------------------------- |
-| AGILE: A Novel Reinforcement Learning Framework of LLM Agents                     |       AGILE      |    arXiv   |    2024   |                           [Paper](https://arxiv.org/abs/2405.14751)                           | RL + memory + tools        |
-| Offline Training of Language Model Agents with Functions as Learnable Weights     |  AgentOptimizer  |    ICML    |    2024   |                           [Paper](https://arxiv.org/abs/2402.11359)                           | Learnable function weights |
-| FireAct: Toward Language Agent Fine-tuning                                        |      FireAct     |    arXiv   |    2023   |                           [Paper](https://arxiv.org/abs/2310.05915)                           | Multi-task agent SFT       |
-| ToRL: Scaling Tool-Integrated Reinforcement Learning for LLM Agents               |       ToRL       |    arXiv   |    2025   |                           [Paper](https://arxiv.org/abs/2503.23383)                           | Tool-integrated RL         |
-| ToolRL: Reward is All Tool Learning Needs                                         |      ToolRL      |    arXiv   |    2025   |                           [Paper](https://arxiv.org/abs/2504.13958)                           | Reward design study        |
-| Agentic Reasoning and Tool Integration for LLMs via Reinforcement Learning        |      ARTIST      |    arXiv   |    2025   |                           [Paper](https://arxiv.org/abs/2505.01441)                           | Unified reasoning + tools  |
-| Agent RL Scaling Law: Agent RL with Spontaneous Code Execution                    |      ZeroTIR     |    arXiv   |    2025   |                           [Paper](https://arxiv.org/abs/2505.07773)                           | Scaling analysis           |
-| Acting Less is Reasoning More! Teaching Models to Act Efficiently                 |        OTC       |    arXiv   |    2025   |                           [Paper](https://arxiv.org/abs/2504.14870)                           | Fewer tool calls           |
-| WebAgent-R1: Training Web Agents via End-to-End Multi-Turn Reinforcement Learning |    WebAgent-R1   |    arXiv   |    2025   |                           [Paper](https://arxiv.org/abs/2505.16421)                           | Web multiturn RL           |
-| Group-in-Group Policy Optimization for LLM Agent Training                         |       GiGPO      |    arXiv   |    2025   |                           [Paper](https://arxiv.org/abs/2505.10978)                           | Hierarchical PPO           |
-| Nemotron-Research-Tool-N1: Exploring Tool-Using LMs with Reinforced Reasoning     | Nemotron-Tool-N1 |    arXiv   |    2025   |                           [Paper](https://arxiv.org/abs/2505.00024)                           | Pure RL for tools          |
-| CATP-LLM: Cost-Aware Tool Planning for Large Language Models                      |     CATP-LLM     | ICCV/arXiv | 2024–2025 | [Paper](https://arxiv.org/abs/2411.16313) \| [Code](https://github.com/duowuyms/OpenCATP-LLM) | Cost-aware planning        |
-| Tool-Star: Empowering LLM-Brained Multi-Tool Reasoner via Reinforcement Learning  |     Tool-Star    |    arXiv   |    2025   |                           [Paper](https://arxiv.org/abs/2505.16410)                           | Hierarchical rewards       |
-
----
+|                       Title                       |    Short title   |     Venue    |    Year   |                                           Materials                                           | Description                                              |
+| :-----------------------------------------------: | :--------------: | :----------: | :-------: | :-------------------------------------------------------------------------------------------: | :------------------------------------------------------- |
+|         AGILE: RL Framework for LLM Agents        |       AGILE      |     arXiv    |    2024   |                           [Paper](https://arxiv.org/abs/2405.14751)                           | Combines RL, memory, and tool use.                       |
+|   AgentOptimizer: Functions as Learnable Weights  |  AgentOptimizer  |     ICML     |    2024   |                           [Paper](https://arxiv.org/abs/2402.11359)                           | Offline training with learnable tool weights.            |
+|          FireAct: Fine-tuning LLM Agents          |      FireAct     |     arXiv    |    2023   |                           [Paper](https://arxiv.org/abs/2310.05915)                           | Multi-task SFT baseline for RL comparison.               |
+|       Tool-Integrated Reinforcement Learning      |       ToRL       |     arXiv    |    2025   |                           [Paper](https://arxiv.org/abs/2503.23383)                           | Large-scale tool-integrated RL training.                 |
+|     ToolRL: Reward is All Tool Learning Needs     |      ToolRL      |     arXiv    |    2025   |                           [Paper](https://arxiv.org/abs/2504.13958)                           | Studies reward shaping for tool use.                     |
+|         ARTIST: Unified Reasoning & Tools         |      ARTIST      |     arXiv    |    2025   |                           [Paper](https://arxiv.org/abs/2505.01441)                           | Joint reasoning + tool integration.                      |
+|          ZeroTIR: Scaling Law for Tool RL         |      ZeroTIR     |     arXiv    |    2025   |                           [Paper](https://arxiv.org/abs/2505.07773)                           | Scaling behavior of tool-augmented RL.                   |
+|         OTC: Acting Less is Reasoning More        |        OTC       |     arXiv    |    2025   |                           [Paper](https://arxiv.org/abs/2504.14870)                           | Optimizes efficiency by reducing unnecessary tool calls. |
+|       WebAgent-R1: End-to-End Multi-Turn RL       |    WebAgent-R1   |     arXiv    |    2025   |                           [Paper](https://arxiv.org/abs/2505.16421)                           | Trains web agents on multi-turn environments.            |
+|             GiGPO: Group-in-Group PPO             |       GiGPO      |     arXiv    |    2025   |                           [Paper](https://arxiv.org/abs/2505.10978)                           | Hierarchical PPO for agent training.                     |
+|             Nemotron-Research-Tool-N1             | Nemotron-Tool-N1 |     arXiv    |    2025   |                           [Paper](https://arxiv.org/abs/2505.00024)                           | Pure RL setup for tool reasoning.                        |
+|         CATP-LLM: Cost-Aware Tool Planning        |     CATP-LLM     | ICCV / arXiv | 2024–2025 | [Paper](https://arxiv.org/abs/2411.16313) \| [Code](https://github.com/duowuyms/OpenCATP-LLM) | Optimizes tool usage under cost constraints.             |
+| Tool-Star: Multi-Tool RL via Hierarchical Rewards |     Tool-Star    |     arXiv    |    2025   |                           [Paper](https://arxiv.org/abs/2505.16410)                           | Reinforcement with structured multi-tool reasoning.      |
 
 ### Memory & Knowledge Management
 
-| Title                                                                                     | Short title |      Venue     | Year |                 Materials                 | Description                       |
-| :---------------------------------------------------------------------------------------- | :---------: | :------------: | :--: | :---------------------------------------: | :-------------------------------- |
-| Memory-R1: Enhancing LLM Agents to Manage and Utilize Memories via Reinforcement Learning |  Memory-R1  |      arXiv     | 2025 | [Paper](https://arxiv.org/abs/2508.19828) | RL memory manager + answer agent  |
-| A-MEM: Agentic Memory for LLM Agents                                                      |    A-MEM    |      arXiv     | 2025 | [Paper](https://arxiv.org/abs/2502.12110) | Zettelkasten-style dynamic memory |
-| KnowAgent: Knowledge-Augmented Planning for LLM-Based Agents                              |  KnowAgent  | NAACL Findings | 2025 | [Paper](https://arxiv.org/abs/2403.03101) | KB-augmented planning             |
-
----
+|                  Title                  | Short title |      Venue     | Year |                 Materials                 | Description                                      |
+| :-------------------------------------: | :---------: | :------------: | :--: | :---------------------------------------: | :----------------------------------------------- |
+|       Memory-R1: RL Memory Manager      |  Memory-R1  |      arXiv     | 2025 | [Paper](https://arxiv.org/abs/2508.19828) | RL-based memory controller for better retrieval. |
+|   A-MEM: Agentic Memory for LLM Agents  |    A-MEM    |      arXiv     | 2025 | [Paper](https://arxiv.org/abs/2502.12110) | Zettelkasten-style dynamic memory management.    |
+| KnowAgent: Knowledge-Augmented Planning |  KnowAgent  | NAACL Findings | 2025 | [Paper](https://arxiv.org/abs/2403.03101) | Planning with structured knowledge bases.        |
 
 ### Fine-Grained RL & Trajectory Calibration
 
-| Title                                                                                                       | Short title |     Venue    | Year |                 Materials                 | Description                |
-| :---------------------------------------------------------------------------------------------------------- | :---------: | :----------: | :--: | :---------------------------------------: | :------------------------- |
-| StepTool: Enhancing Multi-Step Tool Usage in LLMs via Step-Grained Reinforcement Learning                   |   StepTool  |     CIKM     | 2025 | [Paper](https://arxiv.org/abs/2410.07745) | Step-grained rewards       |
-| Encouraging Good Processes Without the Need for Good Answers: Reinforcement Learning for LLM Agent Planning |     RLTR    |     arXiv    | 2025 | [Paper](https://arxiv.org/abs/2508.19598) | Process-centric rewards    |
-| SPA-RL: Reinforcing LLM Agents via Stepwise Progress Attribution                                            |    SPA-RL   |     arXiv    | 2025 | [Paper](https://arxiv.org/abs/2505.20732) | Stepwise attribution       |
-| STeCa: Step-Level Trajectory Calibration for LLM Agent Learning                                             |    STeCa    | ACL Findings | 2025 | [Paper](https://arxiv.org/abs/2502.14276) | Calibrate suboptimal steps |
-| SWEET-RL: Training Multi-Turn LLM Agents on Collaborative Reasoning Tasks                                   |   SWEET-RL  |     arXiv    | 2025 | [Paper](https://arxiv.org/abs/2503.15478) | ColBench; stepwise critic  |
-| ATLaS: Agent Tuning via Learning Critical Steps                                                             |    ATLaS    |      ACL     | 2025 | [Paper](https://arxiv.org/abs/2503.02197) | Critical-step selection    |
-
----
+|                   Title                  | Short title |     Venue    | Year |                 Materials                 | Description                                             |
+| :--------------------------------------: | :---------: | :----------: | :--: | :---------------------------------------: | :------------------------------------------------------ |
+|      StepTool: Multi-Step Tool Usage     |   StepTool  |     CIKM     | 2025 | [Paper](https://arxiv.org/abs/2410.07745) | Step-grained rewards for tool usage.                    |
+|       RLTR: Process-Centric Rewards      |     RLTR    |     arXiv    | 2025 | [Paper](https://arxiv.org/abs/2508.19598) | Rewards good reasoning trajectories, not just outcomes. |
+|   SPA-RL: Stepwise Progress Attribution  |    SPA-RL   |     arXiv    | 2025 | [Paper](https://arxiv.org/abs/2505.20732) | Credits progress at intermediate steps.                 |
+| STeCa: Step-Level Trajectory Calibration |    STeCa    | ACL Findings | 2025 | [Paper](https://arxiv.org/abs/2502.14276) | Calibrates suboptimal steps for better learning.        |
+|   SWEET-RL: Multi-Turn Collaborative RL  |   SWEET-RL  |     arXiv    | 2025 | [Paper](https://arxiv.org/abs/2503.15478) | Multi-turn reasoning with collaborative critic.         |
+|      ATLaS: Critical Step Selection      |    ATLaS    |      ACL     | 2025 | [Paper](https://arxiv.org/abs/2503.02197) | Focuses learning on critical reasoning steps.           |
 
 ### Alignment & Preference Optimization
 
-| Title                                                         | Short title | Venue |    Year   |                 Materials                 | Description         |
-| :------------------------------------------------------------ | :---------: | :---: | :-------: | :---------------------------------------: | :------------------ |
-| Beyond One-Preference-Fits-All Alignment: Multi-Objective DPO |    MODPO    | arXiv | 2023–2024 | [Paper](https://arxiv.org/abs/2310.03708) | Multi-objective DPO |
+|                             Title                             | Short title | Venue |    Year   |                 Materials                 | Description                                 |
+| :-----------------------------------------------------------: | :---------: | :---: | :-------: | :---------------------------------------: | :------------------------------------------ |
+| Beyond One-Preference-Fits-All Alignment: Multi-Objective DPO |    MODPO    | arXiv | 2023–2024 | [Paper](https://arxiv.org/abs/2310.03708) | Extends DPO with multi-objective alignment. |
+
+
 
 ---
 
+### Algorithm Families (PPO, DPO, GRPO, etc.)
+
+Summarizes key algorithm families, objectives, and available implementations.
+
+| Method           | Year | Objective                       | Clip | KL Penalty | Mechanism                                       | Signal               | Link                                                                                                                      | Resource                                                                                                                                                                                     |
+| ---------------- | ---- | ------------------------------- | ---- | ---------- | ----------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **PPO family**   |      |                                 |      |            |                                                 |                      |                                                                                                                           |                                                                                                                                                                                              |
+| PPO              | 2017 | Policy gradient                 | Yes  | No         | Policy ratio clipping                           | Reward               | [Paper](https://arxiv.org/abs/1707.06347)                                                                                 | -                                                                                                                                                                                            |
+| VAPO             | 2025 | Policy gradient                 | Yes  | Adaptive   | Adaptive KL penalty + variance control          | Reward + variance    | [Paper](https://arxiv.org/abs/2504.05118)                                                                                 | -                                                                                                                                                                                            |
+| PF-PPO           | 2024 | Policy gradient                 | Yes  | Yes        | Policy filtration                               | Noisy reward         | [Paper](https://arxiv.org/abs/2409.06957)                                                                                 | [Code](https://github.com/DtYXs/verl/tree/pf-ppo)                                                                                                                                            |
+| VinePPO          | 2024 | Policy gradient                 | Yes  | Yes        | Unbiased value estimates                        | Reward               | [Paper](https://arxiv.org/abs/2410.01679)                                                                                 | [Code](https://github.com/McGill-NLP/VinePPO)                                                                                                                                                |
+| PSGPO            | 2024 | Policy gradient                 | Yes  | Yes        | Process supervision                             | Process reward       | [Paper](https://openreview.net/forum?id=Cn5Z0MUPZT)                                                                       | -                                                                                                                                                                                            |
+| **DPO family**   |      |                                 |      |            |                                                 |                      |                                                                                                                           |                                                                                                                                                                                              |
+| DPO              | 2024 | Preference optimization         | No   | Yes        | Implicit reward                                 | Human preference     | [Paper](https://proceedings.neurips.cc/paper_files/paper/2023/file/a85b405ed65c6477a4fe8302b5e06ce7-Paper-Conference.pdf) | -                                                                                                                                                                                            |
+| β-DPO            | 2024 | Preference optimization         | No   | Adaptive   | Dynamic KL coefficient                          | Human preference     | [Paper](https://openreview.net/forum?id=ZfBuhzE556)                                                                       | [Code](https://github.com/junkangwu/beta-DPO)                                                                                                                                                |
+| SimPO            | 2024 | Preference optimization         | No   | Scaled     | Avg log-prob as implicit reward                 | Human preference     | [Paper](https://openreview.net/forum?id=3Tzcot1LKb)                                                                       | [Code](https://github.com/princeton-nlp/SimPO)                                                                                                                                               |
+| IPO              | 2024 | Implicit preference             | No   | No         | Preference classification                       | Rank                 | [Paper](https://proceedings.mlr.press/v238/gheshlaghi-azar24a.html)                                                       | -                                                                                                                                                                                            |
+| KTO              | 2024 | Knowledge transfer optimization | No   | Yes        | Teacher-student stabilization                   | Logits               | [Paper](https://openreview.net/forum?id=iUwHnoENnl)                                                                       | [Code](https://github.com/ContextualAI/HALOs)                                                                                                                                                |
+| ORPO             | 2024 | Online regularized PO           | No   | Yes        | Online stabilization                            | Feedback reward      | [Paper](https://arxiv.org/abs/2403.07691)                                                                                 | [Code](https://github.com/xfactlab/orpo)                                                                                                                                                     |
+| Step-DPO         | 2024 | Step-wise preference            | No   | Yes        | Step-level supervision                          | Step preference      | [Paper](https://arxiv.org/abs/2406.18629)                                                                                 | [Code](https://github.com/dvlab-research/Step-DPO)                                                                                                                                           |
+| LCPO             | 2025 | Length-conditioned PO           | No   | Yes        | Length preference                               | Reward               | [Paper](https://arxiv.org/abs/2508.10164)                                                                                 | -                                                                                                                                                                                            |
+| **GRPO family**  |      |                                 |      |            |                                                 |                      |                                                                                                                           |                                                                                                                                                                                              |
+| GRPO             | 2025 | Policy gradient (group reward)  | Yes  | Yes        | Group-based relative reward, no value estimates | Group reward         | [Paper](https://arxiv.org/abs/2501.12948)                                                                                 | -                                                                                                                                                                                            |
+| DAPO             | 2025 | Surrogate of GRPO               | Yes  | Yes        | Decoupled clip + dynamic sampling               | Dynamic group reward | [Paper](https://arxiv.org/abs/2503.14476)                                                                                 | [Code](https://github.com/BytedTsinghua-SIA/DAPO) \| [Model](https://huggingface.co/BytedTsinghua-SIA/DAPO-Qwen-32B) \| [Website](https://dapo-sia.github.io/)                               |
+| GSPO             | 2025 | Surrogate of GRPO               | Yes  | Yes        | Sequence-level clipping & reward                | Smooth group reward  | [Paper](https://arxiv.org/pdf/2507.18071)                                                                                 | -                                                                                                                                                                                            |
+| GMPO             | 2025 | Surrogate of GRPO               | Yes  | Yes        | Geometric mean of token rewards                 | Margin-based reward  | [Paper](https://arxiv.org/abs/2507.20673)                                                                                 | [Code](https://github.com/callsys/GMPO)                                                                                                                                                      |
+| ProRL            | 2025 | Same as GRPO                    | Yes  | Yes        | Reference policy reset                          | Group reward         | [Paper](https://arxiv.org/pdf/2505.24864)                                                                                 | [Model](https://huggingface.co/nvidia/Nemotron-Research-Reasoning-Qwen-1.5B)                                                                                                                 |
+| Posterior-GRPO   | 2025 | Same as GRPO                    | Yes  | Yes        | Rewards only successful processes               | Process reward       | [Paper](https://arxiv.org/pdf/2508.05170)                                                                                 | -                                                                                                                                                                                            |
+| Dr.GRPO          | 2025 | Unbiased GRPO                   | Yes  | Yes        | Removes bias in optimization                    | Group reward         | [Paper](https://arxiv.org/pdf/2503.20783)                                                                                 | [Code](https://github.com/sail-sg/understand-r1-zero) \| [Model](https://huggingface.co/collections/sail/oat-zero-understanding-r1-zero-like-training-67dcdb07b9f3eb05f1501c4a)              |
+| Step-GRPO        | 2025 | Same as GRPO                    | Yes  | Yes        | Rule-based reasoning reward                     | Step-wise reward     | [Paper](https://arxiv.org/pdf/2503.12937)                                                                                 | [Code](https://github.com/jingyi0000/R1-VL) \| [Model](https://huggingface.co/collections/jingyiZ00/r1-vl-67d8e2cbcbe40158b0a45e74)                                                          |
+| SRPO             | 2025 | Same as GRPO                    | Yes  | Yes        | Two-stage history resampling                    | Reward               | [Paper](https://arxiv.org/pdf/2504.14286)                                                                                 | [Model](https://huggingface.co/Kwaipilot/SRPO-Qwen-32B)                                                                                                                                      |
+| GRESO            | 2025 | Same as GRPO                    | Yes  | Yes        | Pre-rollout filtering                           | Reward               | [Paper](https://arxiv.org/abs/2506.02177)                                                                                 | [Code](https://github.com/Infini-AI-Lab/GRESO/) \| [Website](https://infini-ai-lab.github.io/GRESO/)                                                                                         |
+| StarPO           | 2025 | Same as GRPO                    | Yes  | Yes        | Reasoning-guided multi-turn                     | Group reward         | [Paper](https://arxiv.org/abs/2504.20073)                                                                                 | [Code](https://github.com/RAGEN-AI/RAGEN) \| [Website](https://ragen-ai.github.io/)                                                                                                          |
+| GHPO             | 2025 | Policy gradient                 | Yes  | Yes        | Adaptive prompt refinement                      | Reward               | [Paper](https://arxiv.org/pdf/2507.10628)                                                                                 | [Code](https://github.com/hkgc-1/GHPO)                                                                                                                                                       |
+| Skywork R1V2     | 2025 | GRPO (hybrid signal)            | Yes  | Yes        | Selective buffer, multimodal reward             | Multimodal           | [Paper](https://arxiv.org/pdf/2504.16656)                                                                                 | [Code](https://github.com/SkyworkAI/Skywork-R1V) \| [Model](https://huggingface.co/Skywork/Skywork-R1V2-38B)                                                                                 |
+| ASPO             | 2025 | GRPO (shaped advantage)         | Yes  | Yes        | Clipped advantage bias                          | Group reward         | [Paper](https://arxiv.org/pdf/2508.19201)                                                                                 | -                                                                                                                                                                                            |
+| TreePO           | 2025 | Surrogate of GRPO               | Yes  | Yes        | Self-guided rollout                             | Group reward         | [Paper](https://arxiv.org/pdf/2508.17445)                                                                                 | [Code](https://github.com/multimodal-art-projection/TreePO) \| [Model](https://huggingface.co/collections/m-a-p/treepo-68ad9a7c078e83cb49cd9b2d) \| [Website](https://m-a-p.ai/TreePO/)      |
+| EDGE-GRPO        | 2025 | Same as GRPO                    | Yes  | Yes        | Entropy-driven advantage + error correction     | Group reward         | [Paper](https://arxiv.org/pdf/2507.21848)                                                                                 | [Code](https://github.com/ZhangXJ199/EDGE-GRPO) \| [Model](https://huggingface.co/collections/Zhang199/edge-grpo-688974025917352b5e335752)                                                   |
+| DARS             | 2025 | Same as GRPO                    | Yes  | No         | Multi-stage hardest problems                    | Group reward         | [Paper](https://arxiv.org/pdf/2508.13755)                                                                                 | [Code](https://github.com/yangzhch6/DARS) \| [Model](https://huggingface.co/collections/yangzhch6/dars-68a6c755262b9867f420c386)                                                             |
+| CHORD            | 2025 | Weighted GRPO + SFT             | Yes  | Yes        | Auxiliary supervised loss                       | Group reward         | [Paper](https://arxiv.org/pdf/2508.11408)                                                                                 | [Code](https://github.com/modelscope/Trinity-RFT/tree/main/examples/mix_chord)                                                                                                               |
+| PAPO             | 2025 | Surrogate of GRPO               | Yes  | Yes        | Implicit perception loss                        | Group reward         | [Paper](https://arxiv.org/pdf/2507.06448)                                                                                 | [Code](https://github.com/MikeWangWZHL/PAPO) \| [Model](https://huggingface.co/collections/PAPOGalaxy/papo-qwen-686d92dd3d43b1ce698f851a) \| [Website](https://mikewangwzhl.github.io/PAPO/) |
+| Pass\@k Training | 2025 | Same as GRPO                    | Yes  | Yes        | Pass\@k metric as reward                        | Group reward         | [Paper](https://arxiv.org/abs/2508.10751)                                                                                 | [Code](https://github.com/RUCAIBox/Passk_Training)                                                                                                                                           |
+
+---
+
+
 ## Cost-Aware Reasoning & Budget-Constrained RL
 
-| Title                                                                    |  Short title  |    Venue    | Year |                                             Materials                                             | Description             |
-| :----------------------------------------------------------------------- | :-----------: | :---------: | :--: | :-----------------------------------------------------------------------------------------------: | :---------------------- |
-| Cost-Augmented Monte Carlo Tree Search for LLM-Assisted Planning         |      CATS     |    arXiv    | 2025 |                             [Paper](https://arxiv.org/abs/2505.14656)                             | Cost-aware MCTS         |
-| Token-Budget-Aware LLM Reasoning                                         |      TALE     |    arXiv    | 2024 |                             [Paper](https://arxiv.org/abs/2412.18547)                             | Token budget policy     |
-| FrugalGPT: How to Use Large Language Models While Reducing Cost          |   FrugalGPT   |    arXiv    | 2023 |                             [Paper](https://arxiv.org/abs/2305.05176)                             | Cost minimization       |
-| Efficient Contextual LLM Cascades via Budget-Constrained Policy Learning |    TREACLE    |    arXiv    | 2024 |                             [Paper](https://arxiv.org/abs/2404.13082)                             | Budgeted cascades       |
-| BudgetMLAgent: Cost-Effective Multi-Agent System for ML Automation       | BudgetMLAgent | AIMLSystems | 2025 |                                                 —                                                 | Cost-effective MAS      |
-| The Cost of Dynamic Reasoning: A Systems View                            |  Systems Cost |    arXiv    | 2025 |                             [Paper](https://arxiv.org/abs/2506.04301)                             | Latency/energy/cost     |
-| Budget-Aware Evaluation of LLM Reasoning Strategies                      |   BudgetEval  |    EMNLP    | 2024 |                      [Paper](https://aclanthology.org/2024.emnlp-main.1112/)                      | Budget-aware eval       |
-| LLM Cascades with Mixture of Thoughts for Cost-Efficient Reasoning       |  MoT Cascade  |  ICLR/arXiv | 2024 | [Paper](https://arxiv.org/abs/2310.03094) \| [Code](https://github.com/MurongYue/LLM_MoT_cascade) | Mixed thoughts cascades |
-| BudgetThinker: Empowering Budget-Aware LLM Reasoning with Control Tokens | BudgetThinker |    arXiv    | 2025 |                             [Paper](https://arxiv.org/abs/2508.17196)                             | Control-token budgeting |
+As agents scale, **cost, latency, and efficiency** become critical. These works tackle budget-aware reasoning, token efficiency, and cost-sensitive planning.
+
+*Sources: *
+
+|                                   Title                                  |  Short title  |     Venue    | Year |                                             Materials                                             | Description                                                      |
+| :----------------------------------------------------------------------: | :-----------: | :----------: | :--: | :-----------------------------------------------------------------------------------------------: | :--------------------------------------------------------------- |
+|     Cost-Augmented Monte Carlo Tree Search for LLM-Assisted Planning     |      CATS     |     arXiv    | 2025 |                             [Paper](https://arxiv.org/abs/2505.14656)                             | Incorporates cost into MCTS for planning under constraints.      |
+|                     Token-Budget-Aware LLM Reasoning                     |      TALE     |     arXiv    | 2024 |                             [Paper](https://arxiv.org/abs/2412.18547)                             | Allocates token budget optimally across reasoning steps.         |
+|                 FrugalGPT: Using LLMs While Reducing Cost                |   FrugalGPT   |     arXiv    | 2023 |                             [Paper](https://arxiv.org/abs/2305.05176)                             | Early exploration of cost minimization by routing queries.       |
+| Efficient Contextual LLM Cascades via Budget-Constrained Policy Learning |    TREACLE    |     arXiv    | 2024 |                             [Paper](https://arxiv.org/abs/2404.13082)                             | Learns cascades balancing budget and accuracy.                   |
+|    BudgetMLAgent: Cost-Effective Multi-Agent System for ML Automation    | BudgetMLAgent |  AIMLSystems | 2025 |                                                 —                                                 | Multi-agent framework designed for cost efficiency.              |
+|               The Cost of Dynamic Reasoning: A Systems View              |  Systems Cost |     arXiv    | 2025 |                             [Paper](https://arxiv.org/abs/2506.04301)                             | Measures latency, energy, and financial cost of agent reasoning. |
+|            Budget-Aware Evaluation of LLM Reasoning Strategies           |   BudgetEval  |     EMNLP    | 2024 |                      [Paper](https://aclanthology.org/2024.emnlp-main.1112/)                      | Proposes evaluation framework accounting for budget limits.      |
+|    LLM Cascades with Mixture of Thoughts for Cost-Efficient Reasoning    |  MoT Cascade  | ICLR / arXiv | 2024 | [Paper](https://arxiv.org/abs/2310.03094) \| [Code](https://github.com/MurongYue/LLM_MoT_cascade) | Uses “mixture of thoughts” cascades for efficiency.              |
+|       BudgetThinker: Budget-Aware LLM Reasoning with Control Tokens      | BudgetThinker |     arXiv    | 2025 |                             [Paper](https://arxiv.org/abs/2508.17196)                             | Introduces control tokens to manage budget during inference.     |
+
 
 ---
 
@@ -207,21 +258,76 @@ Tables give a quick overview; detailed descriptions follow in the text.
 | WorldLLM: Curiosity-Driven World Modeling                  |    WorldLLM   |    arXiv   | 2025 | [Paper](https://arxiv.org/abs/2506.06725) | Curiosity + world model  |
 | SimuRA: Simulative Reasoning Architecture with World Model |     SimuRA    |    arXiv   | 2025 | [Paper](https://arxiv.org/abs/2507.23773) | Mental simulation        |
 
+
+---
+
+## Task: Search & Research Agents
+
+| Method | Category | Base LLM | Link | Resource |
+|--------|----------|----------|------|----------|
+| DeepRetrieval | External | Qwen2.5-3B-Instruct, Llama-3.2-3B-Instruct | [Paper](https://arxiv.org/pdf/2503.00223) | [Code](https://github.com/pat-jj/DeepRetrieval) |
+| Search-R1 | External | Qwen2.5-3B/7B-Base/Instruct | [Paper](https://arxiv.org/abs/2503.09516) | [Code](https://github.com/PeterGriffinJin/Search-R1) |
+| R1-Searcher | External | Qwen2.5-7B, Llama3.1-8B-Instruct | [Paper](https://arxiv.org/abs/2503.05592) | [Code](https://github.com/RUCAIBox/R1-Searcher) |
+| WebThinker | External | QwQ-32B, DeepSeek-R1-Distilled-Qwen-7B/14B/32B | [Paper](https://arxiv.org/abs/2504.21776) | [Code](https://github.com/sunnynexus/WebThinker) |
+| WebSailor | External | Qwen2.5-3B/7B/32B/72B | [Paper](https://arxiv.org/abs/2507.02592) | [Code](https://github.com/Alibaba-NLP/WebAgent/tree/main/WebSailor) |
+| SSRL | Internal | Qwen2.5-1.5B/3B/7B/14B/32B/72B-Instruct, Llama-3.2-1B/8B-Instruct | [Paper](https://arxiv.org/abs/2508.10874) | [Code](https://github.com/TsinghuaC3I/SSRL) |
+| OpenAI Deep Research | External | OpenAI Models | [Blog](https://openai.com/index/introducing-deep-research/) | [Website](https://chatgpt.com/) |
+| Perplexity DeepResearch | External | - | [Blog](https://www.perplexity.ai/hub/blog/introducing-perplexity-deep-research) | [Website](https://www.perplexity.ai/) |
+
+---
+
+## Task: Code Agents
+
+| Method | RL Reward Type | Base LLM | Link | Resource |
+|--------|----------------|----------|------|----------|
+| AceCoder | Outcome | Qwen2.5-Coder-7B-Base/Instruct | [Paper](https://arxiv.org/abs/2502.01718) | [Code](https://github.com/TIGER-AI-Lab/AceCoder) |
+| DeepCoder-14B | Outcome | DeepSeek-R1-Distilled-Qwen-14B | [Blog](https://pretty-radio-b75.notion.site/DeepCoder-A-Fully-Open-Source-14B-Coder-at-O3-mini-Level-1cf81902c14680b3bee5eb349a512a51) | [Code](https://github.com/agentica-project/rllm) |
+| CodeBoost | Process | Qwen2.5-Coder-7B-Instruct, Llama-3.1-8B-Instruct | [Paper](https://arxiv.org/abs/2508.05242) | [Code](https://github.com/sijieaaa/CodeBoost) |
+| R1-Code-Interpreter | Outcome | Qwen2.5-7B/14B-Instruct-1M | [Paper](https://arxiv.org/abs/2505.21668) | [Code](https://github.com/yongchao98/R1-Code-Interpreter) |
+| SWE-RL | Outcome | Llama-3.3-70B-Instruct | [Paper](https://arxiv.org/abs/2502.18449) | [Code](https://github.com/facebookresearch/swe-rl) |
+| Satori-SWE | Outcome | Qwen-2.5-Math-7B | [Paper](https://openreview.net/forum?id=j4FXxMiDjL) | [Code](https://github.com/satori-reasoning/Satori) |
+
+---
+
+## Task: Mathematical Agents
+
+| Method | Reward | Link | Resource |
+|--------|--------|------|----------|
+| ARTIST | Outcome | [Paper](https://arxiv.org/abs/2505.01441) | - |
+| ToRL | Outcome | [Paper](https://arxiv.org/abs/2503.05592) | [Code](https://github.com/GAIR-NLP/ToRL) |
+| ZeroTIR | Outcome | [Paper](https://arxiv.org/abs/2505.07773) | [Code](https://github.com/yyht/openrlhf_async_pipline) |
+| TTRL | Outcome | [Paper](https://arxiv.org/abs/2504.16084) | [Code](https://github.com/PRIME-RL/TTRL) |
+| DeepSeek-Prover-v1.5 | Formal | [Paper](https://openreview.net/forum?id=I4YAIwrsXa) | [Code](https://github.com/deepseek-ai/DeepSeek-Prover-V1.5) |
+| Leanabell-Prover | Formal | [Paper](https://arxiv.org/abs/2504.06122) | [Code](https://github.com/Leanabell-LM/Leanabell-Prover) |
+
+---
+
+## Task: GUI Agents
+
+| Method | Paradigm | Environment | Link | Resource |
+|--------|----------|-------------|------|----------|
+| MM-Navigator | Vanilla VLM | - | [Paper](https://arxiv.org/abs/2311.07562) | [Code](https://github.com/zzxslp/MM-Navigator) |
+| SeeAct | Vanilla VLM | - | [Paper](https://proceedings.mlr.press/v235/zheng24e.html) | [Code](https://github.com/OSU-NLP-Group/SeeAct) |
+| GUI-R1 | RL | Static | [Paper](https://arxiv.org/pdf/2504.10458) | [Code](https://github.com/ritzz-ai/GUI-R1) |
+| UI-R1 | RL | Static | [Paper](https://arxiv.org/abs/2503.21620) | [Code](https://github.com/lll6gg/UI-R1) |
+| InFiGUI-R1 | RL | Static | [Paper](https://arxiv.org/abs/2504.14239) | [Code](https://github.com/InfiXAI/InfiGUI-R1) |
+| UI-TARS | RL | Interactive | [Paper](https://arxiv.org/abs/2501.12326) | [Code](https://github.com/bytedance/UI-TARS) |
+
 ---
 
 ## Surveys & Position Papers
 
-| Title                                              | Short title | Venue | Year |                 Materials                 | Description            |
-| :------------------------------------------------- | :---------: | :---: | :--: | :---------------------------------------: | :--------------------- |
-| Small Language Models are the Future of Agentic AI | SLMs Survey | arXiv | 2025 | [Paper](https://arxiv.org/abs/2506.02153) | SLMs for agent systems |
-| Survey on Evaluation of LLM-Based Agents           | Eval Survey | arXiv | 2025 | [Paper](https://arxiv.org/abs/2503.16416) | Eval methodologies     |
+| Title                                                               | Short title | Venue | Year |                 Materials                 | Description                            |
+| :------------------------------------------------------------------ | :---------: | :---: | :--: | :---------------------------------------: | :------------------------------------- |
+| The Landscape of Agentic Reinforcement Learning for LLMs: A Survey  |   ARL-Surv  | arXiv | 2025 | [Paper](https://arxiv.org/abs/2509.02547) | Comprehensive ARL landscape            |
+| LLM-Based Multi-Agent Reinforcement Learning: Directions            |  MARL-Surv  | arXiv | 2024 | [Paper](https://arxiv.org/abs/2405.11106) | Multi-agent reinforcement learning     |
+| A Survey of Self-Evolving Agents                                    |  SE-Survey  | arXiv | 2025 | [Paper](https://arxiv.org/abs/2507.21046) | Taxonomy of self-evolving LLM agents   |
+| Budget-Aware Evaluation of LLM Reasoning Strategies                 | BudgetEval  | EMNLP | 2024 | [Paper](https://aclanthology.org/2024.emnlp-main.1112/) | Budget-aware reasoning evaluation |
+| Alignment & Preference Optimization in LLM Agents                   | Align-Pos   | arXiv | 2023 | [Paper](https://arxiv.org/abs/2310.03708) | Alignment and multi-objective methods  |
 
 ---
 
 ## Concluding Remarks
 
-Reinforcement learning for AI agents is rapidly evolving. From self-evolving agents like **Alita**, to unified frameworks like **VerlTool**, to fine-grained trajectory calibration approaches such as **STeCa** and **SPA-RL**, the field is moving toward robust, adaptive systems.
-
-Multi-agent collaboration, budget-aware reasoning, and embodied agents are expanding the horizons of what RL-driven AI can achieve. This curated list highlights the latest methods, frameworks, and benchmarks for agentic AI.
-
-💡 *Pull requests welcome to keep this list up to date!*
+Reinforcement learning for AI agents is evolving rapidly, with rich algorithm families (PPO, DPO, GRPO, etc.), diverse evaluation benchmarks, and specialized agents across domains such as search, code, mathematics, and GUI.  
+This repository consolidates these resources to support both research and practical implementation of next-generation agentic systems.
