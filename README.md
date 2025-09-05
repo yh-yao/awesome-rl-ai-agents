@@ -1,6 +1,7 @@
 # Awesome RL AI Agents
-
----
+<p align="center">
+  <img src="AI.png" alt="AI Fox" width="200" />
+</p>
 
 ## 🔎 Quick Navigation
 
@@ -8,6 +9,7 @@
 * [Agent Evaluation and Benchmarks](#agent-evaluation-and-benchmarks)
 * [Agent Training Frameworks](#agent-training-frameworks)
 * [RL for Single Agent](#rl-for-single-agent)
+
   * [Self-Evolution & Test-Time RL](#self-evolution--test-time-rl)
   * [RL for Tool Use & Agent Training](#rl-for-tool-use--agent-training)
   * [Memory & Knowledge Management](#memory--knowledge-management)
@@ -16,27 +18,30 @@
   * [Algorithm Families (PPO, DPO, GRPO, etc.)](#algorithm-families-ppo-dpo-grpo-etc)
 * [Cost-Aware Reasoning & Budget-Constrained RL](#cost-aware-reasoning--budget-constrained-rl)
 * [RL for Multi-Agent Systems](#rl-for-multi-agent-systems)
+
   * [Planning](#planning)
   * [Collaboration](#collaboration)
 * [Embodied Agents & World Models](#embodied-agents--world-models)
 * [Task Agents](#task-agents)
+
   * [Search & Research Agents](#search--research-agents)
   * [Code Agents](#code-agents)
   * [Mathematical Agents](#mathematical-agents)
   * [GUI Agents](#gui-agents)
 * [Surveys & Position Papers](#surveys--position-papers)
 * [Concluding Remarks](#concluding-remarks)
+
 ---
 
-Reinforcement learning (RL) is rapidly becoming a driving force behind AI agents that can reason, act and adapt in the real world. Large language models (LLMs) provide a powerful prior for reasoning, but without feedback they remain static and brittle. RL enables agents to learn from interaction – whether it’s via self-reflection, outcome-based rewards or interacting with humans and tools.
+Reinforcement learning (RL) is rapidly becoming a driving force for AI agents that can reason, act, and adapt in the real world. While large language models (LLMs) provide powerful priors for reasoning, they remain static without feedback. RL closes this gap by enabling agents to learn from interactions—through self-reflection, outcome-based rewards, and tool or human feedback.
 
-The goal of this repository is to curate up-to-date resources on RL for AI agents, focusing on three axes:
+This repository curates up-to-date resources on **RL for AI agents**, organized along three main axes:
 
-* **Agentic workflows without training** – prompting strategies that improve reasoning without fine-tuning.
-* **Evaluation and benchmarks** – systematic tests for reasoning, tool use, and task automation.
-* **RL for single and multi-agent systems** – enabling self-evolution, efficient tool use, and collaboration.
+* **Agentic workflows without training** – prompting strategies that enhance reasoning without fine-tuning.
+* **Evaluation and benchmarks** – systematic tests for reasoning, tool use, and automation.
+* **RL for single and multi-agent systems** – advancing self-evolution, efficient tool use, and collaboration.
 
-Tables give a quick overview; detailed descriptions follow in the text.
+Tables provide quick overviews, while accompanying descriptions highlight deeper insights.
 
 ---
 
