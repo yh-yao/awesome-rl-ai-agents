@@ -3,7 +3,7 @@
   <img src="RL.png" alt="RL" width="400" />
 </p>
 
-## 🔎 Quick Navigation
+## 🔎 Quick Navigation 
 
 * [Agentic Workflow without Training](#agentic-workflow-without-training)
 * [Agent Evaluation and Benchmarks](#agent-evaluation-and-benchmarks)
@@ -388,3 +388,5 @@ https://github.com/xhyumiracle/Awesome-AgenticLLM-RL-Papers
 https://github.com/0russwest0/Awesome-Agent-RL
 
 https://github.com/thinkwee/AgentsMeetRL
+
+🌟 If you find this resource helpful, star the repo and share your favorite RL agent papers or frameworks! Let's build the future of intelligent agents together.
