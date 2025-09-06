@@ -1,6 +1,6 @@
 # Awesome RL AI Agents
 <p align="center">
-  <img src="RL.png" alt="RL" width="400" />
+  <img src="RL.png" alt="RL" width="800" />
 </p>
 
 ## 🔎 Quick Navigation 
