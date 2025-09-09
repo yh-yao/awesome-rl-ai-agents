@@ -1,10 +1,11 @@
 # Awesome RL AI Agents [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
+<p align="center">
+  <img src="RL.png" alt="RL" />
+</p>
+
 > A curated list of recent progress and resources on Reinforcement Learning for AI Agents.  
 
-<p align="center">
-  <img src="RL.png" alt="RL" width="600" />
-</p>
 
 
 ## 🔎 Quick Navigation 
