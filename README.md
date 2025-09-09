@@ -1,4 +1,4 @@
-# Awesome RL AI Agents [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome RL for AI Agents [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
 <p align="center">
   <img src="RL.png" alt="RL" />
