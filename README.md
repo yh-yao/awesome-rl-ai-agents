@@ -241,6 +241,7 @@ As agents scale, **cost, latency, and efficiency** become critical. These works 
 | LLM-Based Multi-Agent Reinforcement Learning: Directions    |   MARL Survey   |  arXiv  | 2024 | [Paper](https://arxiv.org/abs/2405.11106) | Survey                  |
 | Self-Resource Allocation in Multi-Agent LLM Systems         |  Self-ResAlloc  |  arXiv  | 2025 | [Paper](https://arxiv.org/abs/2504.02051) | Planner vs orchestrator |
 | MASLab (duplicate listing)                                  |      MASLab     |  arXiv  | 2025 | [Paper](https://arxiv.org/abs/2505.16988) | Unified MAS APIs        |
+| Dynamic Speculative Agent Planning | DSP         | arXiv | 2025 | [Paper](https://arxiv.org/abs/2509.01920) | Lossless agent planning acceleration via dynamic speculation; trades off latency vs cost; no pre-deployment setup. |
 
 ---
 
