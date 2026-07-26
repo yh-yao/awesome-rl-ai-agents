@@ -73,6 +73,7 @@ Tables provide quick overviews, while accompanying descriptions highlight deeper
 | ACEBench: Who Wins the Match Point in Tool Usage?                                       | ACEBench   | arXiv | 2025 | [Paper](https://arxiv.org/abs/2501.12851) | Fine-grained tool-use evaluation with step sensitivity. |
 | Agent Leaderboard (Galileo)                                                             | Galileo LB | HF    | 2024 | [Dataset](https://huggingface.co/datasets/galileo-ai/agent-leaderboard) | Community leaderboard built around GAIA-style tasks. |
 | Agentic Predictor: Performance Prediction for Agentic Workflows                         | Agentic Predictor | arXiv | 2025 | [Paper](https://arxiv.org/abs/2505.19764) | Predicts workflow performance for better design-time choices. |
+| ClawBench: Can AI Agents Complete Everyday Online Tasks?                                | ClawBench | arXiv | 2026 | [Paper](https://arxiv.org/abs/2604.08523) \| [Code](https://github.com/TIGER-AI-Lab/ClawBench) | 153 everyday tasks across 144 live websites, with final requests intercepted for safe evaluation. |
 
 ---
 
