@@ -1,0 +1,30 @@
+README.md
+  s_7f8a11c1d2e827::t_91ad9d61cb75fa 360
+  s_7f8a11c1d2e827::t_29a90c1047c42b 372-374,376,378,380,382-385,387,393,395,397,399-401,403
+  s_7f8a11c1d2e827::t_1db93d5554fb82 328
+  s_7f8a11c1d2e827::t_89b93b15174ee6 92
+  s_7f8a11c1d2e827::t_4641faead644df 120
+  s_7f8a11c1d2e827::t_86360bb78e89e2 163,165,172-173,185-191,193-196,262
+  s_7f8a11c1d2e827::t_23af21b14f696c 311-313
+  s_7f8a11c1d2e827::t_099a747c534e92 130
+  s_7f8a11c1d2e827::t_1f367bf315585b 338,340
+  s_7f8a11c1d2e827::t_76717f9d9c0193 4,7,9-11,13-24,26-28,36,51
+  s_7f8a11c1d2e827::t_1e887ec2f78cf9 352
+  s_7f8a11c1d2e827::t_68244c1ceb79ce 141-143
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "c342c434f5b8f825c38da3d46eeb8f06906d7d22",
+  "prompts": {},
+  "sessions": {
+    "s_7f8a11c1d2e827": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "36fa429b-8c0a-4335-908a-d2e4789b79c6",
+        "model": "grok-4.6"
+      },
+      "human_author": "yuhang yao <yuhang.yao@zoom.us>"
+    }
+  }
+}
