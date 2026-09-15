@@ -1,39 +1,54 @@
 # Awesome RL for AI Agents [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
 <p align="center">
-  <img src="RL.png" alt="RL" />
+  <img src="RL.png" alt="RL for AI Agents" width="720" />
 </p>
 
-> A curated list of recent progress and resources on Reinforcement Learning for AI Agents.  
+> A curated list of recent progress and resources on **Reinforcement Learning for AI Agents**.
 
+[![Last update](https://img.shields.io/badge/updated-2026--09-blue)](#whats-new)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](#contributing)
+[![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](LICENSE)
 
+---
 
-## 🔎 Quick Navigation 
+## What's New
+
+Highlights added in this refresh (mostly **2026**):
+
+* **Long-horizon credit assignment** — GACA, VICT, PGPO, IAPO, AHEAD
+* **Outcome-only RL that scales** — CANOPY
+* **Budget-aware search** — AnySearch (one policy, any budget)
+* **Memory, skills, and harnesses** — AgenticRag-R1, TRACER, SkillForge, SPACE, HAT
+* **Environments & evaluation** — EnvCraft, ClawBench, MobilePA-Bench
+* **Surveys** — rubric-guided RL (EMNLP Findings 2026)
+
+---
+
+## Contents
 
 * [Agentic Workflow without Training](#agentic-workflow-without-training)
 * [Agent Evaluation and Benchmarks](#agent-evaluation-and-benchmarks)
 * [Agent Training Frameworks](#agent-training-frameworks)
 * [RL for Single Agent](#rl-for-single-agent)
-
   * [Self-Evolution & Test-Time RL](#self-evolution--test-time-rl)
   * [RL for Tool Use & Agent Training](#rl-for-tool-use--agent-training)
-  * [Memory & Knowledge Management](#memory--knowledge-management)
+  * [Memory, Skills & Knowledge](#memory-skills--knowledge)
   * [Fine-Grained RL & Trajectory Calibration](#fine-grained-rl--trajectory-calibration)
   * [Alignment & Preference Optimization](#alignment--preference-optimization)
   * [Algorithm Families (PPO, DPO, GRPO, etc.)](#algorithm-families-ppo-dpo-grpo-etc)
 * [Cost-Aware Reasoning & Budget-Constrained RL](#cost-aware-reasoning--budget-constrained-rl)
 * [RL for Multi-Agent Systems](#rl-for-multi-agent-systems)
-
   * [Planning](#planning)
   * [Collaboration](#collaboration)
 * [Embodied Agents & World Models](#embodied-agents--world-models)
 * [Task Agents](#task-agents)
-
   * [Search & Research Agents](#search--research-agents)
   * [Code Agents](#code-agents)
   * [Mathematical Agents](#mathematical-agents)
   * [GUI Agents](#gui-agents)
 * [Surveys & Position Papers](#surveys--position-papers)
+* [Contributing](#contributing)
 * [Concluding Remarks](#concluding-remarks)
 
 ---
@@ -74,6 +89,7 @@ Tables provide quick overviews, while accompanying descriptions highlight deeper
 | Agent Leaderboard (Galileo)                                                             | Galileo LB | HF    | 2024 | [Dataset](https://huggingface.co/datasets/galileo-ai/agent-leaderboard) | Community leaderboard built around GAIA-style tasks. |
 | Agentic Predictor: Performance Prediction for Agentic Workflows                         | Agentic Predictor | arXiv | 2025 | [Paper](https://arxiv.org/abs/2505.19764) | Predicts workflow performance for better design-time choices. |
 | ClawBench: Can AI Agents Complete Everyday Online Tasks?                                | ClawBench | arXiv | 2026 | [Paper](https://arxiv.org/abs/2604.08523) \| [Code](https://github.com/TIGER-AI-Lab/ClawBench) | 153 everyday tasks across 144 live websites, with final requests intercepted for safe evaluation. |
+| MobilePA-Bench: Benchmarking Mobile Planner Agents on Complex Real-World Tasks          | MobilePA-Bench | arXiv | 2026 | [Paper](https://arxiv.org/abs/2608.23035) | On-device planner agents on complex real-world mobile tasks. |
 
 ---
 
@@ -101,6 +117,7 @@ Tables provide quick overviews, while accompanying descriptions highlight deeper
 | veRL: Volcengine RL Framework                                                  | veRL        | 2024 | <img src="https://img.shields.io/github/stars/volcengine/verl?style=for-the-badge&logo=github&logoColor=white&labelColor=181717&color=ffd700" > | [Paper](https://arxiv.org/pdf/2409.19256) \| [Code](https://github.com/volcengine/verl) | ByteDance’s general-purpose RL framework. |
 | OpenRLHF: Open Reinforcement Learning from Human Feedback                      | OpenRLHF    | 2023 | <img src="https://img.shields.io/github/stars/OpenRLHF/OpenRLHF?style=for-the-badge&logo=github&logoColor=white&labelColor=181717&color=ffd700" > | [Paper](https://arxiv.org/abs/2405.11143) \| [Code](https://github.com/OpenRLHF/OpenRLHF) | Open-source RLHF training platform. |
 | TRL: Transformer Reinforcement Learning                                        | TRL         | 2019 | <img src="https://img.shields.io/github/stars/huggingface/trl?style=for-the-badge&logo=github&logoColor=white&labelColor=181717&color=ffd700" > | [Code](https://github.com/huggingface/trl) | HuggingFace’s RL library for transformers. |
+| EnvCraft: Synthesizing Executable Environments in Agentic RL for Claw-like Agent | EnvCraft | 2026 | -- | [Paper](https://arxiv.org/abs/2609.05576) | Synthesizes 139 sandbox environments (~20K tasks) for claw-style agentic RL. |
 
 
 ---
@@ -110,6 +127,7 @@ Tables provide quick overviews, while accompanying descriptions highlight deeper
 
 Reinforcement learning methods that focus on individual agents (typically LLMs), enabling them to adapt, self-improve, and use tools effectively.
 
+### Self-Evolution & Test-Time RL
 
 |                                                         Title                                                         |   Short title  |      Venue     |    Year   |                                            Materials                                           | Description                                             |
 | :-------------------------------------------------------------------------------------------------------------------: | :------------: | :------------: | :-------: | :--------------------------------------------------------------------------------------------: | :------------------------------------------------------ |
@@ -120,6 +138,9 @@ Reinforcement learning methods that focus on individual agents (typically LLMs),
 |                   Gödel Agent: A Self-Referential Agent Framework for Recursive Self-Improvement                  |   Gödel Agent  |   ACL / arXiv  | 2024–2025 |                            [Paper](https://arxiv.org/abs/2410.04444)                           | Recursive self-modification with reasoning loops.       |
 |                        Darwin Godel Machine: Open-Ended Evolution of Self-Improving Agents                        |    Darwin GM   |      arXiv     |    2025   |                            [Paper](https://arxiv.org/abs/2505.22954)                           | Darwinian exploration for open-ended agent improvement. |
 |                     SkyRL-v0: Train Real-World Long-Horizon Agents via Reinforcement Learning                     |    SkyRL-v0    | arXiv / GitHub |    2025   | [Blog](https://novasky-ai.notion.site/skyrl-v0) \| [Code](https://github.com/NovaSky-AI/SkyRL) | Long-horizon online RL training pipeline.               |
+| Explore More, Drift Less: Outcome-Only Reinforcement Learning Can Suffice for Long-Horizon Interactive Agents | CANOPY | arXiv | 2026 | [Paper](https://arxiv.org/abs/2609.01245) \| [Code](https://github.com/AlibabaResearch/SignalCoverageRL) | Coverage-anchored on-policy RL; tops AppWorld without dense rewards. |
+| Training Agents to Evolve with Their Harness: TaoLive Digital Avatar Agent Technical Report | HAT | arXiv | 2026 | [Paper](https://arxiv.org/abs/2608.15763) | Harness-aware SFT + RL so compact models adapt when skills, tools, and prompts change. |
+| SkillForge: Evolving Verifiable Skills for Reinforcement Learning Agents | SkillForge | arXiv | 2026 | [Paper](https://arxiv.org/abs/2608.24747) | Verifies and refines a skill bank through environment interaction. |
 
 
 ### RL for Tool Use & Agent Training
@@ -139,14 +160,17 @@ Reinforcement learning methods that focus on individual agents (typically LLMs),
 |             Nemotron-Research-Tool-N1             | Nemotron-Tool-N1 |     arXiv    |    2025   |                           [Paper](https://arxiv.org/abs/2505.00024)                           | Pure RL setup for tool reasoning.                        |
 |         CATP-LLM: Cost-Aware Tool Planning        |     CATP-LLM     | ICCV / arXiv | 2024–2025 | [Paper](https://arxiv.org/abs/2411.16313) \| [Code](https://github.com/duowuyms/OpenCATP-LLM) | Optimizes tool usage under cost constraints.             |
 | Tool-Star: Multi-Tool RL via Hierarchical Rewards |     Tool-Star    |     arXiv    |    2025   |                           [Paper](https://arxiv.org/abs/2505.16410)                           | Reinforcement with structured multi-tool reasoning.      |
+| Act More, Decide Less: Skill-Guided Adaptive Action Chunking for Long-Horizon LLM Agents | SPACE | EMNLP | 2026 | [Paper](https://arxiv.org/abs/2609.02042) | Skill-guided action chunks; fewer LLM rounds, higher success. |
 
-### Memory & Knowledge Management
+### Memory, Skills & Knowledge
 
 |                  Title                  | Short title |      Venue     | Year |                 Materials                 | Description                                      |
 | :-------------------------------------: | :---------: | :------------: | :--: | :---------------------------------------: | :----------------------------------------------- |
 |       Memory-R1: RL Memory Manager      |  Memory-R1  |      arXiv     | 2025 | [Paper](https://arxiv.org/abs/2508.19828) | RL-based memory controller for better retrieval. |
 |   A-MEM: Agentic Memory for LLM Agents  |    A-MEM    |      arXiv     | 2025 | [Paper](https://arxiv.org/abs/2502.12110) | Zettelkasten-style dynamic memory management.    |
 | KnowAgent: Knowledge-Augmented Planning |  KnowAgent  | NAACL Findings | 2025 | [Paper](https://arxiv.org/abs/2403.03101) | Planning with structured knowledge bases.        |
+| AgenticRag-R1: Agentic Reinforcement Learning with Stack Memory for Multi-Step Reasoning, Retrieval and Memorizing | AgenticRag-R1 | arXiv | 2026 | [Paper](https://arxiv.org/abs/2608.29622) \| [Code](https://github.com/jiangxinke/Harness-RL/tree/AgenticRAG-R1-Whitebox) | Stack memory + fine-grained actions for agentic RAG. |
+| TRACER: Per-Tool Context Retention for LLM Agents via Consequence-Attributed Reinforcement Learning | TRACER | arXiv | 2026 | [Paper](https://arxiv.org/abs/2608.29363) | Learns which tool outputs to keep; 29–46% fewer tokens. |
 
 ### Fine-Grained RL & Trajectory Calibration
 
@@ -158,7 +182,18 @@ Reinforcement learning methods that focus on individual agents (typically LLMs),
 | STeCa: Step-Level Trajectory Calibration |    STeCa    | ACL Findings | 2025 | [Paper](https://arxiv.org/abs/2502.14276) | Calibrates suboptimal steps for better learning.        |
 |   SWEET-RL: Multi-Turn Collaborative RL  |   SWEET-RL  |     arXiv    | 2025 | [Paper](https://arxiv.org/abs/2503.15478) | Multi-turn reasoning with collaborative critic.         |
 |      ATLaS: Critical Step Selection      |    ATLaS    |      ACL     | 2025 | [Paper](https://arxiv.org/abs/2503.02197) | Focuses learning on critical reasoning steps.           |
+| Granularity-Adaptive Credit Assignment for Long-Horizon LLM Agent Reinforcement Learning | GACA | arXiv | 2026 | [Paper](https://arxiv.org/abs/2609.12424) | Mixes step- and episode-level advantages by uncertainty (NLL). |
+| VICT: Verifier-Instrumented Credit Tracing for Long-Horizon LLM Agent Reinforcement Learning | VICT | EMNLP | 2026 | [Paper](https://arxiv.org/abs/2608.28128) | Traces verifier atoms back to actions; no extra critic. |
+| PGPO: Potential-Guided Policy Optimization for Multi-Turn Agentic Tasks | PGPO | arXiv | 2026 | [Paper](https://arxiv.org/abs/2609.02236) | Cross-trajectory credit via empirical state potentials. |
+| IAPO: Influence-Aware Policy Optimization for Credit Assignment in Multi-Turn Service Agents | IAPO | arXiv | 2026 | [Paper](https://arxiv.org/abs/2608.24588) | Influence graphs over user/tool observations for service agents. |
+| AHEAD: Adaptive Hindsight with Environment-Augmented Distillation for Agentic RL | AHEAD | arXiv | 2026 | [Paper](https://arxiv.org/abs/2608.24114) | Step-aware privileged distillation on error steps. |
 
+### Alignment & Preference Optimization
+
+| Title | Short title | Venue | Year | Materials | Description |
+| ----- | ----------- | ----- | ---- | --------- | ----------- |
+| Beyond One-Preference-Fits-All Alignment: Multi-Objective DPO | MODPO | arXiv | 2023–2024 | [Paper](https://arxiv.org/abs/2310.03708) | Extends DPO to multi-objective alignment. |
+| Forty Shades of Blue: Quality-Diversity Alignment via Mode-Conditioned Reinforcement Learning | MoDA | arXiv | 2026 | [Paper](https://arxiv.org/abs/2609.14896) | Mode-conditioned RL against alignment-induced mode collapse. |
 
 ---
 
@@ -204,7 +239,6 @@ Summarizes key algorithm families, objectives, and available implementations.
 | CHORD            | 2025 | Weighted GRPO + SFT             | Yes  | Yes        | Auxiliary supervised loss                       | Group reward         | [Paper](https://arxiv.org/pdf/2508.11408)                                                                                 | [Code](https://github.com/modelscope/Trinity-RFT/tree/main/examples/mix_chord)                                                                                                               |
 | PAPO             | 2025 | Surrogate of GRPO               | Yes  | Yes        | Implicit perception loss                        | Group reward         | [Paper](https://arxiv.org/pdf/2507.06448)                                                                                 | [Code](https://github.com/MikeWangWZHL/PAPO) \| [Model](https://huggingface.co/collections/PAPOGalaxy/papo-qwen-686d92dd3d43b1ce698f851a) \| [Website](https://mikewangwzhl.github.io/PAPO/) |
 | Pass\@k Training | 2025 | Same as GRPO                    | Yes  | Yes        | Pass\@k metric as reward                        | Group reward         | [Paper](https://arxiv.org/abs/2508.10751)                                                                                 | [Code](https://github.com/RUCAIBox/Passk_Training)                                                                                                                                           |
-| Training Agents to Evolve with Their Harness: TaoLive Digital Avatar Agent Technical Report | HAT | arXiv | 2026 | [Paper](https://arxiv.org/abs/2608.15763) | Uses RL in augmented harness environments to train an agent for changes in skills, tools, prompts, and hooks. |
 
 ---
 
@@ -225,7 +259,7 @@ As agents scale, **cost, latency, and efficiency** become critical. These works 
 |            Budget-Aware Evaluation of LLM Reasoning Strategies           |   BudgetEval  |     EMNLP    | 2024 |                      [Paper](https://aclanthology.org/2024.emnlp-main.1112/)                      | Proposes evaluation framework accounting for budget limits.      |
 |    LLM Cascades with Mixture of Thoughts for Cost-Efficient Reasoning    |  MoT Cascade  | ICLR / arXiv | 2024 | [Paper](https://arxiv.org/abs/2310.03094) \| [Code](https://github.com/MurongYue/LLM_MoT_cascade) | Uses “mixture of thoughts” cascades for efficiency.              |
 |       BudgetThinker: Budget-Aware LLM Reasoning with Control Tokens      | BudgetThinker |     arXiv    | 2025 |                             [Paper](https://arxiv.org/abs/2508.17196)                             | Introduces control tokens to manage budget during inference.     |
-| Beyond One-Preference-Fits-All Alignment: Multi-Objective DPO |    MODPO    | arXiv | 2023–2024 | [Paper](https://arxiv.org/abs/2310.03708) | Extends DPO with multi-objective alignment. |
+| One Policy, Any Budget: Internalizing Budget-Aware Search via Reinforcement Learning | AnySearch | arXiv | 2026 | [Paper](https://arxiv.org/abs/2609.00813) \| [Code](https://github.com/xwsun01/AnySearch) | One search policy that adapts to any deployment budget. |
 
 
 
@@ -242,7 +276,6 @@ As agents scale, **cost, latency, and efficiency** become critical. These works 
 | Plan-over-Graph: Towards Parallelable Agent Schedule        | Plan-over-Graph |  arXiv  | 2025 | [Paper](https://arxiv.org/abs/2502.14563) | Graph scheduling        |
 | LLM-Based Multi-Agent Reinforcement Learning: Directions    |   MARL Survey   |  arXiv  | 2024 | [Paper](https://arxiv.org/abs/2405.11106) | Survey                  |
 | Self-Resource Allocation in Multi-Agent LLM Systems         |  Self-ResAlloc  |  arXiv  | 2025 | [Paper](https://arxiv.org/abs/2504.02051) | Planner vs orchestrator |
-| MASLab (duplicate listing)                                  |      MASLab     |  arXiv  | 2025 | [Paper](https://arxiv.org/abs/2505.16988) | Unified MAS APIs        |
 | Dynamic Speculative Agent Planning | DSP         | arXiv | 2025 | [Paper](https://arxiv.org/abs/2509.01920) | Lossless agent planning acceleration via dynamic speculation; trades off latency vs cost; no pre-deployment setup. |
 
 ---
@@ -256,7 +289,6 @@ As agents scale, **cost, latency, and efficiency** become critical. These works 
 | Scaling LLM-Based Multi-Agent Collaboration                      |   Scaling MAC   |  arXiv  | 2024 |                        [Paper](https://arxiv.org/abs/2406.07155)                       | Scaling study        |
 | MMAC-Copilot: Multi-Modal Agent Collaboration                    |   MMAC-Copilot  |  arXiv  | 2024 |                        [Paper](https://arxiv.org/abs/2404.18074)                       | Multi-modal collab   |
 | CORY: Sequential Cooperative Multi-Agent Reinforcement Learning  |       CORY      | NeurIPS | 2024 | [Paper](https://arxiv.org/abs/2410.06101) \| [Code](https://github.com/Harry67Hu/CORY) | Role-swapping PPO    |
-| OpenManus-RL (duplicate listing)                                 |   OpenManus-RL  |  GitHub | 2025 |                    [Code](https://github.com/OpenManus/OpenManus-RL)                   | Live-streamed tuning |
 | MAPoRL: Multi-Agent Post-Co-Training with Reinforcement Learning |      MAPoRL     |  arXiv  | 2025 |                        [Paper](https://arxiv.org/abs/2502.18439)                       | Co-refine + verifier |
 
 ---
@@ -276,70 +308,10 @@ As agents scale, **cost, latency, and efficiency** become critical. These works 
 
 ---
 
-## Task: Search & Research Agents
-
-| Method | Category | Base LLM | Link | Resource |
-|--------|----------|----------|------|----------|
-| DeepRetrieval | External | Qwen2.5-3B-Instruct, Llama-3.2-3B-Instruct | [Paper](https://arxiv.org/pdf/2503.00223) | [Code](https://github.com/pat-jj/DeepRetrieval) |
-| Search-R1 | External | Qwen2.5-3B/7B-Base/Instruct | [Paper](https://arxiv.org/abs/2503.09516) | [Code](https://github.com/PeterGriffinJin/Search-R1) |
-| R1-Searcher | External | Qwen2.5-7B, Llama3.1-8B-Instruct | [Paper](https://arxiv.org/abs/2503.05592) | [Code](https://github.com/RUCAIBox/R1-Searcher) |
-| WebThinker | External | QwQ-32B, DeepSeek-R1-Distilled-Qwen-7B/14B/32B | [Paper](https://arxiv.org/abs/2504.21776) | [Code](https://github.com/sunnynexus/WebThinker) |
-| WebSailor | External | Qwen2.5-3B/7B/32B/72B | [Paper](https://arxiv.org/abs/2507.02592) | [Code](https://github.com/Alibaba-NLP/WebAgent/tree/main/WebSailor) |
-| SSRL | Internal | Qwen2.5-1.5B/3B/7B/14B/32B/72B-Instruct, Llama-3.2-1B/8B-Instruct | [Paper](https://arxiv.org/abs/2508.10874) | [Code](https://github.com/TsinghuaC3I/SSRL) |
-| OpenAI Deep Research | External | OpenAI Models | [Blog](https://openai.com/index/introducing-deep-research/) | [Website](https://chatgpt.com/) |
-| Perplexity DeepResearch | External | - | [Blog](https://www.perplexity.ai/hub/blog/introducing-perplexity-deep-research) | [Website](https://www.perplexity.ai/) |
-
----
-
-## Task: Code Agents
-
-| Method | RL Reward Type | Base LLM | Link | Resource |
-|--------|----------------|----------|------|----------|
-| AceCoder | Outcome | Qwen2.5-Coder-7B-Base/Instruct | [Paper](https://arxiv.org/abs/2502.01718) | [Code](https://github.com/TIGER-AI-Lab/AceCoder) |
-| DeepCoder-14B | Outcome | DeepSeek-R1-Distilled-Qwen-14B | [Blog](https://pretty-radio-b75.notion.site/DeepCoder-A-Fully-Open-Source-14B-Coder-at-O3-mini-Level-1cf81902c14680b3bee5eb349a512a51) | [Code](https://github.com/agentica-project/rllm) |
-| CodeBoost | Process | Qwen2.5-Coder-7B-Instruct, Llama-3.1-8B-Instruct | [Paper](https://arxiv.org/abs/2508.05242) | [Code](https://github.com/sijieaaa/CodeBoost) |
-| R1-Code-Interpreter | Outcome | Qwen2.5-7B/14B-Instruct-1M | [Paper](https://arxiv.org/abs/2505.21668) | [Code](https://github.com/yongchao98/R1-Code-Interpreter) |
-| SWE-RL | Outcome | Llama-3.3-70B-Instruct | [Paper](https://arxiv.org/abs/2502.18449) | [Code](https://github.com/facebookresearch/swe-rl) |
-| Satori-SWE | Outcome | Qwen-2.5-Math-7B | [Paper](https://openreview.net/forum?id=j4FXxMiDjL) | [Code](https://github.com/satori-reasoning/Satori) |
-
----
-
-## Task: Mathematical Agents
-
-| Method | Reward | Link | Resource |
-|--------|--------|------|----------|
-| ARTIST | Outcome | [Paper](https://arxiv.org/abs/2505.01441) | - |
-| ToRL | Outcome | [Paper](https://arxiv.org/abs/2503.05592) | [Code](https://github.com/GAIR-NLP/ToRL) |
-| ZeroTIR | Outcome | [Paper](https://arxiv.org/abs/2505.07773) | [Code](https://github.com/yyht/openrlhf_async_pipline) |
-| TTRL | Outcome | [Paper](https://arxiv.org/abs/2504.16084) | [Code](https://github.com/PRIME-RL/TTRL) |
-| DeepSeek-Prover-v1.5 | Formal | [Paper](https://openreview.net/forum?id=I4YAIwrsXa) | [Code](https://github.com/deepseek-ai/DeepSeek-Prover-V1.5) |
-| Leanabell-Prover | Formal | [Paper](https://arxiv.org/abs/2504.06122) | [Code](https://github.com/Leanabell-LM/Leanabell-Prover) |
-
-
-## Task: GUI Agents
-
-| Method | Paradigm | Environment | Link | Resource |
-|--------|----------|-------------|------|----------|
-| MM-Navigator | Vanilla VLM | - | [Paper](https://arxiv.org/abs/2311.07562) | [Code](https://github.com/zzxslp/MM-Navigator) |
-| SeeAct | Vanilla VLM | - | [Paper](https://proceedings.mlr.press/v235/zheng24e.html) | [Code](https://github.com/OSU-NLP-Group/SeeAct) |
-| GUI-R1 | RL | Static | [Paper](https://arxiv.org/pdf/2504.10458) | [Code](https://github.com/ritzz-ai/GUI-R1) |
-| UI-R1 | RL | Static | [Paper](https://arxiv.org/abs/2503.21620) | [Code](https://github.com/lll6gg/UI-R1) |
-| UI-TARS | RL | Interactive | [Paper](https://arxiv.org/abs/2501.12326) | [Code](https://github.com/bytedance/UI-TARS) |
-
----
-
-## Surveys & Position Papers
-
-| Title                                                               | Short title | Venue | Year |                 Materials                 | Description                            |
-| :------------------------------------------------------------------ | :---------: | :---: | :--: | :---------------------------------------: | :------------------------------------- |
-| The Landscape of Agentic Reinforcement Learning for LLMs: A Survey  |   ARL-Surv  | arXiv | 2025 | [Paper](https://arxiv.org/abs/2509.02547) | Comprehensive ARL landscape            |
-| Budget-Aware Evaluation of LLM Reasoning Strategies                 | BudgetEval  | EMNLP | 2024 | [Paper](https://aclanthology.org/2024.emnlp-main.1112/) | Budget-aware reasoning evaluation |
-| Alignment & Preference Optimization in LLM Agents                   | Align-Pos   | arXiv | 2023 | [Paper](https://arxiv.org/abs/2310.03708) | Alignment and multi-objective methods  |
-|                     A Survey of Self-Evolving Agents: On Path to Artificial Super Intelligence                    |    SE Survey   |      arXiv     |    2025   |                            [Paper](https://arxiv.org/abs/2507.21046)                           | Taxonomy and methods for self-evolving agents.          |
-
 ## Task Agents
 
 ### Search & Research Agents
+
 | Method | Category | Base LLM | Link | Resource |
 |--------|----------|----------|------|----------|
 | DeepRetrieval | External | Qwen2.5-3B-Instruct, Llama-3.2-3B-Instruct | [Paper](https://arxiv.org/pdf/2503.00223) | [Code](https://github.com/pat-jj/DeepRetrieval) |
@@ -351,7 +323,10 @@ As agents scale, **cost, latency, and efficiency** become critical. These works 
 | OpenAI Deep Research | External | OpenAI Models | [Blog](https://openai.com/index/introducing-deep-research/) | [Website](https://chatgpt.com/) |
 | Perplexity DeepResearch | External | - | [Blog](https://www.perplexity.ai/hub/blog/introducing-perplexity-deep-research) | [Website](https://www.perplexity.ai/) |
 
+---
+
 ### Code Agents
+
 | Method | RL Reward Type | Base LLM | Link | Resource |
 |--------|----------------|----------|------|----------|
 | AceCoder | Outcome | Qwen2.5-Coder-7B-Base/Instruct | [Paper](https://arxiv.org/abs/2502.01718) | [Code](https://github.com/TIGER-AI-Lab/AceCoder) |
@@ -360,8 +335,10 @@ As agents scale, **cost, latency, and efficiency** become critical. These works 
 | R1-Code-Interpreter | Outcome | Qwen2.5-7B/14B-Instruct-1M | [Paper](https://arxiv.org/abs/2505.21668) | [Code](https://github.com/yongchao98/R1-Code-Interpreter) |
 | SWE-RL | Outcome | Llama-3.3-70B-Instruct | [Paper](https://arxiv.org/abs/2502.18449) | [Code](https://github.com/facebookresearch/swe-rl) |
 | Satori-SWE | Outcome | Qwen-2.5-Math-7B | [Paper](https://openreview.net/forum?id=j4FXxMiDjL) | [Code](https://github.com/satori-reasoning/Satori) |
+| Robust Code RL via Faulty-Code-Driven Test Case Synthesis | Code RL | — | [Paper](https://arxiv.org/abs/2608.24135) | Dense rewards from synthesized tests on faulty code (EMNLP 2026). |
 
 ### Mathematical Agents
+
 | Method | Reward | Link | Resource |
 |--------|--------|------|----------|
 | ARTIST | Outcome | [Paper](https://arxiv.org/abs/2505.01441) | - |
@@ -371,7 +348,9 @@ As agents scale, **cost, latency, and efficiency** become critical. These works 
 | DeepSeek-Prover-v1.5 | Formal | [Paper](https://openreview.net/forum?id=I4YAIwrsXa) | [Code](https://github.com/deepseek-ai/DeepSeek-Prover-V1.5) |
 | Leanabell-Prover | Formal | [Paper](https://arxiv.org/abs/2504.06122) | [Code](https://github.com/Leanabell-LM/Leanabell-Prover) |
 
+
 ### GUI Agents
+
 | Method | Paradigm | Environment | Link | Resource |
 |--------|----------|-------------|------|----------|
 | MM-Navigator | Vanilla VLM | - | [Paper](https://arxiv.org/abs/2311.07562) | [Code](https://github.com/zzxslp/MM-Navigator) |
@@ -383,18 +362,42 @@ As agents scale, **cost, latency, and efficiency** become critical. These works 
 
 ---
 
+## Surveys & Position Papers
+
+| Title                                                               | Short title | Venue | Year |                 Materials                 | Description                            |
+| :------------------------------------------------------------------ | :---------: | :---: | :--: | :---------------------------------------: | :------------------------------------- |
+| The Landscape of Agentic Reinforcement Learning for LLMs: A Survey  |   ARL-Surv  | arXiv | 2025 | [Paper](https://arxiv.org/abs/2509.02547) | Comprehensive ARL landscape            |
+| Budget-Aware Evaluation of LLM Reasoning Strategies                 | BudgetEval  | EMNLP | 2024 | [Paper](https://aclanthology.org/2024.emnlp-main.1112/) | Budget-aware reasoning evaluation |
+| Alignment & Preference Optimization in LLM Agents                   | Align-Pos   | arXiv | 2023 | [Paper](https://arxiv.org/abs/2310.03708) | Alignment and multi-objective methods  |
+| A Survey of Self-Evolving Agents: On Path to Artificial Super Intelligence | SE Survey | arXiv | 2025 | [Paper](https://arxiv.org/abs/2507.21046) | Taxonomy and methods for self-evolving agents. |
+| A Survey on Rubric-Guided Reinforcement Learning for Language Models | Rubric-RL | EMNLP Findings | 2026 | [Paper](https://arxiv.org/abs/2608.27505) | Rubrics as interpretable rewards, from constitutions to agentic extensions. |
+| LLM-Based Multi-Agent Reinforcement Learning: Directions | MARL Survey | arXiv | 2024 | [Paper](https://arxiv.org/abs/2405.11106) | Directions for LLM-based MARL. |
+
+---
+
+## Contributing
+
+PRs are welcome. Please:
+
+1. Add papers to the **most specific** section (avoid duplicating across tables).
+2. Keep table columns consistent with the surrounding section.
+3. Prefer arXiv / official code / official blog links.
+4. One-line descriptions: what the method does, not a full abstract.
+
+Suggested PR title: `Add <Short title> (<Year>) to <Section>`.
+
+---
+
 ## Concluding Remarks
 
-Reinforcement learning for AI agents is rapidly evolving, driving breakthroughs in reasoning, autonomy, and collaboration. As new methods and frameworks emerge, staying current is essential for both research and practical deployment. This curated list aims to support the community in navigating the dynamic landscape and make contributions!
+Reinforcement learning for AI agents is moving fast: self-evolution, tool use, long-horizon credit assignment, and cost-aware search are now first-class research problems. This list is a living map of that landscape — please help keep it current.
 
-💡 *Pull requests welcome to keep this list up to date!*
+💡 *Pull requests welcome.*
 
-## References
+## Related Lists
 
-https://github.com/xhyumiracle/Awesome-AgenticLLM-RL-Papers
+* [Awesome-AgenticLLM-RL-Papers](https://github.com/xhyumiracle/Awesome-AgenticLLM-RL-Papers)
+* [Awesome-Agent-RL](https://github.com/0russwest0/Awesome-Agent-RL)
+* [AgentsMeetRL](https://github.com/thinkwee/AgentsMeetRL)
 
-https://github.com/0russwest0/Awesome-Agent-RL
-
-https://github.com/thinkwee/AgentsMeetRL
-
-🌟 If you find this resource helpful, star the repo and share your favorite RL agent papers or frameworks! Let's build the future of intelligent agents together.
+🌟 If this is useful, star the repo and share papers or frameworks you like.
