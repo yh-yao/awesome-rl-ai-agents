@@ -161,6 +161,7 @@ Reinforcement learning methods that focus on individual agents (typically LLMs),
 |         CATP-LLM: Cost-Aware Tool Planning        |     CATP-LLM     | ICCV / arXiv | 2024–2025 | [Paper](https://arxiv.org/abs/2411.16313) \| [Code](https://github.com/duowuyms/OpenCATP-LLM) | Optimizes tool usage under cost constraints.             |
 | Tool-Star: Multi-Tool RL via Hierarchical Rewards |     Tool-Star    |     arXiv    |    2025   |                           [Paper](https://arxiv.org/abs/2505.16410)                           | Reinforcement with structured multi-tool reasoning.      |
 | Act More, Decide Less: Skill-Guided Adaptive Action Chunking for Long-Horizon LLM Agents | SPACE | EMNLP | 2026 | [Paper](https://arxiv.org/abs/2609.02042) | Skill-guided action chunks; fewer LLM rounds, higher success. |
+| Teaching LLMs to Learn Tool Trialing and Execution through Environment Interaction | ToolMaster | arXiv | 2026 | [Paper](https://arxiv.org/abs/2601.12762) \| [Code](https://github.com/NEUIR/ToolMaster) | Trial-and-execution tool learning: SFT on tool-trial trajectories, then GRPO via environment interaction. |
 
 ### Memory, Skills & Knowledge
 
