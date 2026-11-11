@@ -290,6 +290,7 @@ As agents scale, **cost, latency, and efficiency** become critical. These works 
 | MMAC-Copilot: Multi-Modal Agent Collaboration                    |   MMAC-Copilot  |  arXiv  | 2024 |                        [Paper](https://arxiv.org/abs/2404.18074)                       | Multi-modal collab   |
 | CORY: Sequential Cooperative Multi-Agent Reinforcement Learning  |       CORY      | NeurIPS | 2024 | [Paper](https://arxiv.org/abs/2410.06101) \| [Code](https://github.com/Harry67Hu/CORY) | Role-swapping PPO    |
 | MAPoRL: Multi-Agent Post-Co-Training with Reinforcement Learning |      MAPoRL     |  arXiv  | 2025 |                        [Paper](https://arxiv.org/abs/2502.18439)                       | Co-refine + verifier |
+| NeuroMAS: Multi-Agent Systems as Neural Networks with Joint Reinforcement Learning | NeuroMAS | STAI-X | 2026 | [Paper](https://arxiv.org/abs/2605.16757) \| [Code](https://github.com/haoranlustat/NeuroMAS) | Layered agents trained jointly with RL |
 
 ---
 
